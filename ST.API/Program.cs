@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SchoolManagementSystem.MainInfrastructure.Data;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using ST.MainInfrastructure.Data;
+using System;
 
-namespace SchoolManagementSystem.API
+namespace ST.API
 {
     public class Program
     {

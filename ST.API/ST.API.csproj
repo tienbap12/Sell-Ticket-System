@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <UserSecretsId>aspnet-SchoolManagementSystem.API-60FFB06C-4004-43DB-9051-85DD2D8F7DB6</UserSecretsId>
+    <UserSecretsId>aspnet-ST.API-60FFB06C-4004-43DB-9051-85DD2D8F7DB6</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,7 +23,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SchoolManagementSystem.Application\ST.Application.csproj" />
-    <ProjectReference Include="..\SchoolManagementSystem.MainInfrastructure\ST.MainInfrastructure.csproj" />
+    <ProjectReference Include="..\ST.Application\ST.Application.csproj" />
+    <ProjectReference Include="..\ST.Domain\ST.Domain.csproj" />
+    <ProjectReference Include="..\ST.MainInfrastructure\ST.MainInfrastructure.csproj" />
   </ItemGroup>
 </Project>

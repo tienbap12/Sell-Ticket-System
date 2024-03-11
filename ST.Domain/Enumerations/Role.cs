@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Domain.Enumerations
+﻿namespace ST.Domain.Enumerations
 {
     public enum Role
     {

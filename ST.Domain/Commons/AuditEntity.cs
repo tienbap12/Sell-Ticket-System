@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchoolManagementSystem.Domain.Commons
+namespace ST.Domain.Commons
 {
     public class AuditEntity : IAuditInfo
     {

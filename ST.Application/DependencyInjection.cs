@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using SchoolManagementSystem.Application.Commons.Behaviors;
-using SchoolManagementSystem.Application.Options;
+using ST.Application.Commons.Behaviors;
+using ST.Application.Options;
 
-namespace SchoolManagementSystem.Application
+namespace ST.Application
 {
     public static class DependencyInjection
     {

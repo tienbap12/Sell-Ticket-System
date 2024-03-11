@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Application
+﻿namespace ST.Application
 {
     public static class Response
     {

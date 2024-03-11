@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SchoolManagementSystem.Domain.Commons
+namespace ST.Domain.Commons
 {
     public interface IAuditInfo
     {

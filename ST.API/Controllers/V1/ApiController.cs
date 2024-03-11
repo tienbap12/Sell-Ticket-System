@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SchoolManagementSystem.API.Controllers.V1
+namespace ST.API.Controllers.V1
 {
     public class ApiController : ControllerBase
     {

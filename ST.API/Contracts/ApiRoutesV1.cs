@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.API.Contracts
+﻿namespace ST.API.Contracts
 {
     public static class ApiRoutesV1
     {

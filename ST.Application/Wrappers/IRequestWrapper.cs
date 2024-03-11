@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SchoolManagementSystem.Application.Wrappers
+namespace ST.Application.Wrappers
 {
     public interface IRequestWrapper<T> : IRequest<Response<T>>
     {

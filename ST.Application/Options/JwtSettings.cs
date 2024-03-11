@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Application.Options
+﻿namespace ST.Application.Options
 {
     public class JwtSettings
     {

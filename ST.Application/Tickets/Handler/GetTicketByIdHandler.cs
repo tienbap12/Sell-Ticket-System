@@ -1,16 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SchoolManagementSystem.Application.Commons.Interfaces;
-using SchoolManagementSystem.Application.Tickets.DTOs;
-using SchoolManagementSystem.Application.Tickets.Queries;
-using SchoolManagementSystem.Application.Wrappers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ST.Application.Commons.Interfaces;
+using ST.Application.Tickets.DTOs;
+using ST.Application.Tickets.Queries;
+using ST.Application.Wrappers;
 
-namespace SchoolManagementSystem.Application.Tickets.Handler
+namespace ST.Application.Tickets.Handler
 {
     public class GetTicketByIdHandler : IRequestHandlerWrapper<GetTicketByIdQuery, TicketDto>
     {

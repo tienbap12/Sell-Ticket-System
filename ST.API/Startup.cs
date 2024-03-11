@@ -3,15 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
-using SchoolManagementSystem.API.Installers;
-using SchoolManagementSystem.API.Options;
-using SchoolManagementSystem.Application;
-using SchoolManagementSystem.Application.Commons.Interfaces;
-using SchoolManagementSystem.MainInfrastructure;
+using ST.API.Installers;
+using ST.API.Options;
+using ST.Application;
+using ST.MainInfrastructure;
 
-namespace SchoolManagementSystem.API
+namespace ST.API
 {
     public class Startup
     {

@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SchoolManagementSystem.Application.Commons.Interfaces;
-using SchoolManagementSystem.Application.Tickets.Queries;
-using SchoolManagementSystem.Application.Wrappers;
-using SchoolManagementSystem.Domain.Entities;
+using ST.Application.Commons.Interfaces;
+using ST.Application.Tickets.Queries;
+using ST.Application.Wrappers;
+using ST.Domain.Entities;
 
-namespace SchoolManagementSystem.Application.Tickets.Handler
+namespace ST.Application.Tickets.Handler
 {
     public class GetAllTicketQueryHandler : IRequestHandlerWrapper<GetAllTicketQuery, IList<Ticket>>
     {

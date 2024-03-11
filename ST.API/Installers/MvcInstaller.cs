@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace SchoolManagementSystem.API.Installers
+namespace ST.API.Installers
 {
     public static class MvcInstaller
     {

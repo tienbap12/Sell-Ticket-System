@@ -1,9 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using SchoolManagementSystem.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ST.Domain.Entities;
 
-namespace SchoolManagementSystem.Application.Commons.Interfaces
+namespace ST.Application.Commons.Interfaces
 {
     public interface IApplicationDbContext
     {

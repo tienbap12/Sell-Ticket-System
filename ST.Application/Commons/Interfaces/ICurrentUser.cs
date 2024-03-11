@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Application.Commons.Interfaces
+﻿namespace ST.Application.Commons.Interfaces
 {
     public interface ICurrentUser
     {

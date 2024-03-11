@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.API.Contracts;
-using SchoolManagementSystem.Application.Tickets.Queries;
+﻿using Microsoft.AspNetCore.Mvc;
+using ST.API.Contracts;
+using ST.Application.Tickets.Queries;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.API.Controllers.V1
+namespace ST.API.Controllers.V1
 {
     [ApiController]
     public class TicketController : ApiController

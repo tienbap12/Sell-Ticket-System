@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.API.Options
+﻿namespace ST.API.Options
 {
     public class SwaggerOptions
     {

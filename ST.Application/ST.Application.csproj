@@ -15,7 +15,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SchoolManagementSystem.Domain\ST.Domain.csproj" />
+    <ProjectReference Include="..\ST.Domain\ST.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tickets\Commands\" />

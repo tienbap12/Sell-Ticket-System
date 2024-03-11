@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
 
-namespace SchoolManagementSystem.Application.Commons.Behaviors
+namespace ST.Application.Commons.Behaviors
 {
     public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>

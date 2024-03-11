@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using ST.Application.Commons.Interfaces;
+using ST.Domain.Commons;
+using ST.Domain.Entities;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using SchoolManagementSystem.Application.Commons.Interfaces;
-using SchoolManagementSystem.Domain.Commons;
-using SchoolManagementSystem.Domain.Entities;
 
-namespace SchoolManagementSystem.MainInfrastructure.Data
+namespace ST.MainInfrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext,
         IApplicationDbContext
@@ -72,55 +71,5 @@ namespace SchoolManagementSystem.MainInfrastructure.Data
             }
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    base.OnConfiguring(optionsBuilder);
-
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-        //    }
-        //}
-
-       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            GenerateUser.SeedAdminUser("devvhale", 
-                "devvhale@gmail.com", modelBuilder);
-
-            modelBuilder.Entity<ApplicationUser>().ToTable("Users");
-            modelBuilder.Entity<AppUserRole>().ToTable("Roles");
-
-            modelBuilder.Entity<Student>().ToTable("Students");
-            modelBuilder.Entity<Teacher>().ToTable("Teachers");
-            modelBuilder.Entity<Psychologist>().ToTable("Psychologists");
-
-            modelBuilder.Entity<Student>()
-                .HasOne(s => s.SchoolClass)
-                .WithMany(sc => sc.Students)
-                .HasForeignKey(s => s.SchoolClassId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<SchoolClass>()
-                .HasOne(c => c.Psychologist)
-                .WithMany(p => p.SchoolClasses)
-                .HasForeignKey(c => c.PsychologistId);
-
-            modelBuilder.Entity<TeacherClass>()
-                .HasKey(tc => new {tc.TeacherId, tc.SchoolClassId});
-            modelBuilder.Entity<TeacherClass>()
-                .HasOne(tc => tc.Teacher)
-                .WithMany(t => t.TeacherClasses)
-                .HasForeignKey(tc => tc.TeacherId);
-            modelBuilder.Entity<TeacherClass>()
-                .HasOne(tc => tc.SchoolClass)
-                .WithMany(sc => sc.TeacherClasses)
-                .HasForeignKey(tc => tc.SchoolClassId);
-            modelBuilder.Entity<TeacherClass>()
-                .HasOne(tc => tc.Course)
-                .WithMany(c => c.TeacherClasses)
-                .HasForeignKey(tc => tc.CourseId);
-        }*/
     }
 }

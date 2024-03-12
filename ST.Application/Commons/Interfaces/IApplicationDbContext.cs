@@ -3,11 +3,9 @@ using ST.Domain.Entities;
 
 namespace ST.Application.Commons.Interfaces
 {
-    public interface IApplicationDbContext
+    public interface IApplicationDbContext : IDisposable
     {
-
         DbSet<Ticket> Tickets { get; set; }
-        void DetachAllEntities();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

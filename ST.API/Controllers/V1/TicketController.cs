@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ST.API.Contracts;
-using ST.Application.Tickets.Queries;
+using ST.Application.Feature.Tickets.Queries.GetAllTicket;
+using ST.Application.Feature.Tickets.Queries.GetTicketById;
 using System.Threading.Tasks;
 
 namespace ST.API.Controllers.V1
@@ -15,9 +16,9 @@ namespace ST.API.Controllers.V1
             return Ok(await Mediator.Send(query));
         }
         [HttpGet(ApiRoutesV1.Ticket.GetById)]
-        public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var query = new GetTicketByIdQuery(id);
+            var query = new GetTicketByIdQuery(id); 
             return Ok(await Mediator.Send(query));
         }
     }

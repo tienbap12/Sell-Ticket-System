@@ -9,10 +9,10 @@
         public static class Ticket
         {
             public const string GetAll = Base + "Tickets";
-            public const string GetById = GetAll + "/{ticketId}";
+            public const string GetById = GetAll + "/ticketId";
             public const string Create = Base + "Ticket";
-            public const string Update = GetAll + "/{ticketId}";
-            public const string Delete = GetAll + "/{ticketId}";
+            public const string Update = GetAll + "/ticketId";
+            public const string Delete = GetAll + "/ticketId";
         }
     }
 }

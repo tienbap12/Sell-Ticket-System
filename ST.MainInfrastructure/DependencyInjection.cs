@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ST.Application.Commons.Interfaces;
+using ST.Application.Interfaces;
 using ST.MainInfrastructure.Data;
+using ST.MainInfrastructure.Repositories;
 
 namespace ST.MainInfrastructure
 {
@@ -20,6 +22,9 @@ namespace ST.MainInfrastructure
 
             services.AddScoped<IApplicationDbContext>(provider =>
                 provider.GetService<ApplicationDbContext>());
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            
 
             return services;
         }

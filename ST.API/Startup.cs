@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using ST.API.Installers;
 using ST.API.Options;
 using ST.Application;
+using ST.Application.Mapper;
 using ST.MainInfrastructure;
 
 namespace ST.API
@@ -23,6 +24,7 @@ namespace ST.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddInfrastructure(Configuration);
             services.AddApplication(Configuration);
 

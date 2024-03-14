@@ -1,24 +1,26 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ST.Application.Commons.Interfaces;
-using ST.Application.Feature.Tickets.DTOs;
 using ST.Application.Wrappers;
+using ST.Contracts.Ticket;
+using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Tickets.Queries.GetTicketById
 {
-    public class GetTicketByIdHandler : IRequestHandlerWrapper<GetTicketByIdQuery, TicketResponse>
+    public class GetTicketByIdHandler : IQueryHandler<GetTicketByIdQuery, TicketResponse>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
-
-        public GetTicketByIdHandler(IApplicationDbContext context, IMapper mapper)
+        private readonly ITicketRepository _ticketRepository;
+        public GetTicketByIdHandler(ITicketRepository ticketRepository,IApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
+            _ticketRepository = ticketRepository;
         }
         public async Task<Response<TicketResponse>> Handle(GetTicketByIdQuery request, CancellationToken cancellationToken)
         {
-            var ticket = await _context.Tickets.Include(c => c.Category).Where(t => t.Id == request.Id).SingleOrDefaultAsync(cancellationToken);
+            var ticket = await _ticketRepository.GetTicketByIdWCate(request.Id);
             if (ticket is null)
             {
                 return Response.Fail<TicketResponse>($"khong tim thay ticket {request.Id}");

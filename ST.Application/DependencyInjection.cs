@@ -21,6 +21,7 @@ namespace ST.Application
             services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssembly(assembly);
+                config.AddOpenBehavior(typeof(UnitOfWorkBehavior<,>));
             });
             services.AddTransient(typeof(IPipelineBehavior<,>),
                 typeof(ValidationBehavior<,>));

@@ -1,9 +1,9 @@
-﻿using ST.Application.Feature.Tickets.DTOs;
-using ST.Application.Wrappers;
+﻿using ST.Application.Wrappers;
+using ST.Contracts.Ticket;
 
 namespace ST.Application.Feature.Tickets.Queries.GetAllTicket
 {
-    public class GetAllTicketQuery : IRequestWrapper<IList<TicketResponse>>
+    public class GetAllTicketQuery : IQuery<IList<TicketResponse>>
     {
     }
 }

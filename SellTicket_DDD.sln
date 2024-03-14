@@ -9,6 +9,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST.Domain", "ST.Domain\ST.Domain.csproj", "{604E3600-A647-4304-AD07-6F9BA50FE4B1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ST.MainInfrastructure", "ST.MainInfrastructure\ST.MainInfrastructure.csproj", "{9973D25B-2F49-4879-A1E5-BEBFF319365A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{604E3600-A647-4304-AD07-6F9BA50FE4B1} = {604E3600-A647-4304-AD07-6F9BA50FE4B1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST.Contracts", "ST.Constracts\ST.Contracts.csproj", "{2FB78C68-A4BD-4A90-9AF4-AFCC867AC23F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +37,10 @@ Global
 		{9973D25B-2F49-4879-A1E5-BEBFF319365A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9973D25B-2F49-4879-A1E5-BEBFF319365A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9973D25B-2F49-4879-A1E5-BEBFF319365A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FB78C68-A4BD-4A90-9AF4-AFCC867AC23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB78C68-A4BD-4A90-9AF4-AFCC867AC23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB78C68-A4BD-4A90-9AF4-AFCC867AC23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB78C68-A4BD-4A90-9AF4-AFCC867AC23F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

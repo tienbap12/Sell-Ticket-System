@@ -1,33 +1,46 @@
 ﻿using MediatR;
 using ST.Application.Commons.Interfaces;
 using ST.Domain.Data;
-using System;
-using System.Threading.Tasks;
 
 namespace ST.Application.Commons.Behaviors
 {
-    public class UnitOfWork : IUnitOfWork
+    /* public class UnitOfWork : IUnitOfWork
+     {
+         private readonly IApplicationDbContext _context;
+
+         public UnitOfWork(IApplicationDbContext context)
+         {
+             _context = context;
+         }
+
+         public async Task SaveChangesAsync()
+         {
+             await _context.SaveChangesAsync(CancellationToken.None);
+         }
+     }*/
+    public class UnitOfWorkBehavior<TTRequest, TTResponse>(IUnitOfWork unitOfWork)
+       : IPipelineBehavior<TTRequest, TTResponse>
+       where TTRequest : notnull
+       where TTResponse : notnull
     {
-        private readonly IApplicationDbContext _context;
-
-        public UnitOfWork(IApplicationDbContext context)
+        public async Task<TTResponse> Handle(TTRequest request,
+            RequestHandlerDelegate<TTResponse> next,
+            CancellationToken cancellationToken)
         {
-            _context = context;
+            var response = await next();
+            if (IsCommand())
+            {
+                await unitOfWork.SaveChangesAsync();
+                return response;
+            }
+            else
+            {
+                return response;
+            }
         }
-
-        public async Task<int> CommitAsync()
+        private static bool IsCommand()
         {
-            return await _context.SaveChangesAsync(CancellationToken.None);
-        }
-
-        public async Task RollbackAsync()
-        {
-            await Task.CompletedTask;
-        }
-
-        public void Dispose()
-        {
-            _context.Dispose();
+            return typeof(TTRequest).Name.EndsWith("Command");
         }
     }
 }

@@ -1,26 +1,28 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ST.Application.Commons.Interfaces;
-using ST.Application.Feature.Tickets.DTOs;
 using ST.Application.Wrappers;
-using ST.Domain.Entities;
+using ST.Contracts.Ticket;
+using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Tickets.Queries.GetAllTicket
 {
-    public class GetAllTicketQueryHandler : IRequestHandlerWrapper<GetAllTicketQuery, IList<TicketResponse>>
+    public class GetAllTicketQueryHandler : IQueryHandler<GetAllTicketQuery, IList<TicketResponse>>
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ITicketRepository _ticketRepository;
 
-        public GetAllTicketQueryHandler(IApplicationDbContext context, IMapper mapper)
+        public GetAllTicketQueryHandler(ITicketRepository ticketRepository,IApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
+            _ticketRepository = ticketRepository;
         }
 
         public async Task<Response<IList<TicketResponse>>> Handle(GetAllTicketQuery request, CancellationToken cancellationToken)
         {
-            var tickets = await _context.Tickets.Include(c => c.Category).AsNoTracking().ToListAsync(cancellationToken);
+            var tickets = await _ticketRepository.GetAllTicketWithCategory();
             if (tickets is null)
             {
                 return Response.Fail<IList<TicketResponse>>("khong lay duoc du lieu");

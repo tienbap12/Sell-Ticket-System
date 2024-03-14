@@ -2,7 +2,7 @@
 
 namespace ST.Application.Wrappers
 {
-    public interface IRequestWrapper<T> : IRequest<Response<T>>
+    public interface IQuery<T> : IRequest<Response<T>>
     {
         
     }

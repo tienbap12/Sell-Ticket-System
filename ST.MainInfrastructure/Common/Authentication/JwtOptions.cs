@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ST.MainInfrastructure.Interface
+namespace ST.MainInfrastructure.Common.Authentication
 {
-    internal class ITicketRepository
+    internal class JwtOptions
     {
     }
 }

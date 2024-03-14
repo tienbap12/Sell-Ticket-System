@@ -14,5 +14,13 @@
             public const string Update = GetAll + "/ticketId";
             public const string Delete = GetAll + "/ticketId";
         }
+        public static class Category
+        {
+            public const string GetAll = Base + "Category";
+            public const string GetById = GetAll + "/categoryId";
+            public const string Create = Base + "Category";
+            public const string Update = Base + "Category";
+            public const string Delete = Base + "Category";
+        }
     }
 }

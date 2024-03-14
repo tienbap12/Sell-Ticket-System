@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ST.Application.Commons.Behaviors;
 using ST.Application.Commons.Interfaces;
-using ST.Application.Interfaces;
+using ST.Domain.Data;
+using ST.Domain.Repositories;
 using ST.MainInfrastructure.Data;
 using ST.MainInfrastructure.Repositories;
 
@@ -22,10 +24,9 @@ namespace ST.MainInfrastructure
 
             services.AddScoped<IApplicationDbContext>(provider =>
                 provider.GetService<ApplicationDbContext>());
-
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            
-
+            services.AddScoped<IUnitOfWork, ApplicationDbContext>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             return services;
         }
     }

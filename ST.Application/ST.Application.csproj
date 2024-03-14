@@ -15,10 +15,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
   </ItemGroup>
   <ItemGroup>
-	  <ProjectReference Include="..\ST.Domain\ST.Domain.csproj" />
+    <ProjectReference Include="..\ST.Constracts\ST.Contracts.csproj" />
+    <ProjectReference Include="..\ST.Domain\ST.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Feature\Tickets\Commands\CreateTicketCommand\" />
-    <Folder Include="Feature\Tickets\Handler\" />
+    <Folder Include="Feature\User\Queries\" />
   </ItemGroup>
 </Project>

@@ -1,10 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace ST.Domain.Data;
-
-public interface IUnitOfWork :  IDisposable
+namespace ST.Domain.Data
 {
-    Task<int> CommitAsync();
-    Task RollbackAsync();
+    public interface IUnitOfWork
+    {
+        Task SaveChangesAsync();
+        Task CreateAsync<T>(T entity) where T : class;
+        Task UpdateAsync<T>( T entity) where T : class;
+        Task DeleteAsync<T>(int id) where T : class;
+    }
 }

@@ -22,5 +22,10 @@
             public const string Update = Base + "Category";
             public const string Delete = Base + "Category";
         }
+        public static class Account
+        {
+            public const string Login = Base + "Login";
+            public const string Register = Base + "Register";
+        }
     }
 }

@@ -4,20 +4,6 @@ using ST.Domain.Data;
 
 namespace ST.Application.Commons.Behaviors
 {
-    /* public class UnitOfWork : IUnitOfWork
-     {
-         private readonly IApplicationDbContext _context;
-
-         public UnitOfWork(IApplicationDbContext context)
-         {
-             _context = context;
-         }
-
-         public async Task SaveChangesAsync()
-         {
-             await _context.SaveChangesAsync(CancellationToken.None);
-         }
-     }*/
     public class UnitOfWorkBehavior<TTRequest, TTResponse>(IUnitOfWork unitOfWork)
        : IPipelineBehavior<TTRequest, TTResponse>
        where TTRequest : notnull

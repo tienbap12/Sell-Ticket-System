@@ -12,7 +12,7 @@ namespace ST.API
     public class Program
     {
         public static void Main(string[] args)
-       {
+        {
             var host = CreateHostBuilder(args).Build();
             using var scope = host.Services.CreateScope();
             var services = scope.ServiceProvider;
@@ -20,6 +20,7 @@ namespace ST.API
             {
                 var context = services.GetRequiredService<ApplicationDbContext>();
                 context.Database.Migrate();
+                host.Run(); // Move this line inside the using block
             }
             catch (Exception e)
             {
@@ -27,8 +28,6 @@ namespace ST.API
                 logger.LogError(e, $"An error occured while migrating or seeding the database: {e.Message}");
                 throw;
             }
-
-            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

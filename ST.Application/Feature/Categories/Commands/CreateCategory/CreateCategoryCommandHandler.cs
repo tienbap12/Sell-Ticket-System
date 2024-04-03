@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MediatR;
 using ST.Application.Wrappers;
 using ST.Contracts.Category;
 using ST.Domain.Entities;

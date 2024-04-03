@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using ST.Application.Wrappers;
 using ST.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ST.Application.Feature.Categories.Commands.UpdateCategory
 {
@@ -26,15 +21,16 @@ namespace ST.Application.Feature.Categories.Commands.UpdateCategory
             {
                 return Response.Fail("Khong ton tai cate trong he thong");
             }
-            cateExist.Name = request.Request.Name;
-            cateExist.ImagePath = request.Request.imagePath; // Lưu ý: Sử dụng thuộc tính ImagePath thay vì imagePath
+            /*cateExist.Name = request.Request.Name;
+            cateExist.ImagePath = request.Request.imagePath;
             cateExist.SuperName = request.Request.superName;
             cateExist.SuperId = request.Request.superId;
             cateExist.Status = request.Request.status;
             cateExist.IsPublic = request.Request.isPublic;
-            cateExist.Priority = request.Request.priority;
+            cateExist.Priority = request.Request.priority;*/
 
-            // Lưu thay đổi vào cơ sở dữ liệu
+            _mapper.Map(request.Request, cateExist);
+
             try
             {
                 await _categoryRepository.UpdateAsync(cateExist);
@@ -42,7 +38,6 @@ namespace ST.Application.Feature.Categories.Commands.UpdateCategory
             }
             catch (Exception ex)
             {
-                // Xử lý ngoại lệ nếu có
                 return Response.Fail($"Lỗi khi cập nhật danh mục: {ex.Message}");
             }
         }

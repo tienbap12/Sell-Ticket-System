@@ -1,10 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ST.Application.Commons.Abstractions;
 using ST.Application.Commons.Behaviors;
 using ST.Application.Commons.Interfaces;
+using ST.Domain.Commons;
 using ST.Domain.Data;
 using ST.Domain.Repositories;
+using ST.MainInfrastructure.Common.Authentication;
+using ST.MainInfrastructure.Common.Cryptography;
 using ST.MainInfrastructure.Data;
 using ST.MainInfrastructure.Repositories;
 
@@ -27,6 +31,11 @@ namespace ST.MainInfrastructure
             services.AddScoped<IUnitOfWork, ApplicationDbContext>();
             services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ITokenRepository, TokenRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IJwtProvider, JwtProvider>();
+            services.AddScoped<IPasswordHashChecker, PasswordHasher>();
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
             return services;
         }
     }

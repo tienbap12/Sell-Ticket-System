@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace ST.Application.Feature.User.Commands.Login
 {
-    public class LoginCommand(string username, string password) : ICommand<Response<AuthResponse>>
+    public class LoginCommand(LoginRequest request) : ICommand<Response<AuthResponse>>
     {
-        public string Username { get; set; } = username;
-        public string Password { get; set; } = password;
+        public LoginRequest Request { get; set; } = request;
     }
 }

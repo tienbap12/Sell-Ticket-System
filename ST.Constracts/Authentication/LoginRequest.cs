@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ST.Contracts.Authentication
 {
-    internal class AuthReques_t
+    public class LoginRequest
     {
+        public string userName { get; set; }
+        public string Password { get; set; }
     }
 }

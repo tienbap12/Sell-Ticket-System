@@ -1,14 +1,18 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using ST.API.Installers;
 using ST.API.Options;
 using ST.Application;
 using ST.Application.Mapper;
 using ST.MainInfrastructure;
+using ST.MainInfrastructure.Common.Authentication;
+using System.Text;
 
 namespace ST.API
 {
@@ -30,7 +34,7 @@ namespace ST.API
 
 
             services.InstallServices(Configuration);
-
+            services.Configure<JwtOptions>(Configuration.GetSection("Jwt"));
             services.AddControllers().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -60,7 +64,7 @@ namespace ST.API
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseCors(pb => 
+            app.UseCors(pb =>
                 pb.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());

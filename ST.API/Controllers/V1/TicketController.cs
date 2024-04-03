@@ -18,7 +18,6 @@ namespace ST.API.Controllers.V1
             return Ok(await Mediator.Send(query));
         }
         [HttpGet(ApiRoutesV1.Ticket.GetById)]
-        [Authorize(Roles = "User")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var query = new GetTicketByIdQuery(id); 

@@ -16,11 +16,11 @@ namespace ST.Application.Feature.Categories.Commands.DeleteCategory
             var cateExist = await _categoryRepository.GetByIdAsync(request.Id);
             if (cateExist == null)
             {
-                return Response.Fail("Khong tim thay Category");
+                return Response.NotFound("Category", request.Id);
             }
 
             await _categoryRepository.DeleteAsync(request.Id);
-            return Response.Success("Xoa danh muc thanh cong");
+            return Response.CreateSuccessfully("Category");
         }
     }
 }

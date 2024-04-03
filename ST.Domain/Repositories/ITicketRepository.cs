@@ -9,6 +9,8 @@ namespace ST.Domain.Repositories
         Task<Ticket> GetByIdAsync(int id);
         Task<List<Ticket>> GetAllTicketWithCategory();
         Task<Ticket> GetTicketByIdWCate(int id);
-
+        Task CreateAsync(Ticket ticket);
+        Task UpdateAsync(Ticket ticket);
+        Task DeleteAsync(int id);
     }
 }

@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using ST.Application.Commons.Interfaces;
 using ST.Application.Wrappers;
 using ST.Contracts.Ticket;
 using ST.Domain.Repositories;
@@ -9,12 +7,10 @@ namespace ST.Application.Feature.Tickets.Queries.GetTicketById
 {
     public class GetTicketByIdHandler : IQueryHandler<GetTicketByIdQuery, TicketResponse>
     {
-        private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
         private readonly ITicketRepository _ticketRepository;
-        public GetTicketByIdHandler(ITicketRepository ticketRepository,IApplicationDbContext context, IMapper mapper)
+        public GetTicketByIdHandler(ITicketRepository ticketRepository, IMapper mapper)
         {
-            _context = context;
             _mapper = mapper;
             _ticketRepository = ticketRepository;
         }

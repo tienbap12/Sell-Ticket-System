@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using ST.Application.Commons.Interfaces;
 using ST.Domain.Data;
 
 namespace ST.Application.Commons.Behaviors

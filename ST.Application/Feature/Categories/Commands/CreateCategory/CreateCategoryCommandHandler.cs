@@ -18,21 +18,11 @@ namespace ST.Application.Feature.Categories.Commands.CreateCategory
         }
         public async Task<Result> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var cate = new Category
-            {
-                Name = request.Request.Name,
-                ImagePath = request.Request.imagePath,
-                IsPublic = request.Request.isPublic,
-                SuperName = request.Request.superName,
-                Status = request.Request.status,
-                Priority = request.Request.priority,
-                SuperId = request.Request.superId
-            };
+            var result = _mapper.Map<CategoryRequest, Category>(request.Request);
 
-            await _categoryRepository.CreateAsync(cate);
+            await _categoryRepository.CreateAsync(result);
 
-            var result = _mapper.Map<CategoryResponse>(cate);
-            return Response.Success("avc");
+            return Response.Success("Thêm danh mục thành công");
         }
 
     }

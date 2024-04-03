@@ -19,6 +19,7 @@
     <ProjectReference Include="..\ST.Domain\ST.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commons\Interfaces\" />
     <Folder Include="Feature\User\Queries\" />
   </ItemGroup>
 </Project>

@@ -2,8 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ST.Application.Commons.Abstractions;
-using ST.Application.Commons.Behaviors;
-using ST.Application.Commons.Interfaces;
 using ST.Domain.Commons;
 using ST.Domain.Data;
 using ST.Domain.Repositories;
@@ -25,9 +23,6 @@ namespace ST.MainInfrastructure
                     configuration.GetConnectionString("DefaultConnection"),
                     optionsBuilder => optionsBuilder
                         .MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-
-            services.AddScoped<IApplicationDbContext>(provider =>
-                provider.GetService<ApplicationDbContext>());
             services.AddScoped<IUnitOfWork, ApplicationDbContext>();
             services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();

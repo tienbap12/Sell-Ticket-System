@@ -10,7 +10,6 @@ namespace ST.Application.Feature.Categories.Commands.CreateCategory
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
-
         public CreateCategoryCommandHandler(ICategoryRepository categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
@@ -22,7 +21,7 @@ namespace ST.Application.Feature.Categories.Commands.CreateCategory
 
             await _categoryRepository.CreateAsync(result);
 
-            return Response.Success("Thêm danh mục thành công");
+            return Response.CreateSuccessfully("Category");
         }
 
     }

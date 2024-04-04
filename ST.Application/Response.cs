@@ -1,6 +1,6 @@
 ﻿namespace ST.Application
 {
-    public class Response
+    public static class Response
     {
         public static Response<T> Success<T>(T data, string message) => new Response<T>(data, message, false);
         public static Result Success(string message) => new Result(message, false);

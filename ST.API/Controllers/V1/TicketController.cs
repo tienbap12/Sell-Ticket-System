@@ -11,7 +11,6 @@ namespace ST.API.Controllers.V1
     public class TicketController : ApiController
     {
         [HttpGet(ApiRoutesV1.Ticket.GetAll)]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllAsync()
         {
             var query = new GetAllTicketQuery();

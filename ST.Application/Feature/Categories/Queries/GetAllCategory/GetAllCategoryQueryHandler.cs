@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
-using MediatR;
+using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Contracts.Category;
 using ST.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ST.Application.Feature.Categories.Queries.GetAllCategory
 {
@@ -27,10 +22,10 @@ namespace ST.Application.Feature.Categories.Queries.GetAllCategory
             var categories = await _categoryRepository.GetAllAsync();
             if (categories == null)
             {
-                return Response.Fail<IList<CategoryResponse>>("Lay danh sach that baii");
+                return Response<IList<CategoryResponse>>.Failure("Lay danh sach that baii");
             }
-            var result = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
-            return Response.Success<IList<CategoryResponse>>(result.ToList(), "lay danh sach thanh cong");
+            var Response = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
+            return Response<IList<CategoryResponse>>.Success( "lay danh sach thanh cong", Response.ToList());
         }
     }
 }

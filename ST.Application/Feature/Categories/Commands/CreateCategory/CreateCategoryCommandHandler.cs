@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Contracts.Category;
 using ST.Domain.Entities;
@@ -6,7 +7,7 @@ using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Categories.Commands.CreateCategory
 {
-    internal class CreateCategoryCommandHandler : ICommandHandler<CreateCategoryCommand, Result>
+    internal class CreateCategoryCommandHandler : ICommandHandler<CreateCategoryCommand, Response>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
@@ -15,13 +16,20 @@ namespace ST.Application.Feature.Categories.Commands.CreateCategory
             _categoryRepository = categoryRepository;
             _mapper = mapper;
         }
-        public async Task<Result> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             var result = _mapper.Map<CategoryRequest, Category>(request.Request);
+            try
+            {
+                await _categoryRepository.CreateAsync(result);
 
-            await _categoryRepository.CreateAsync(result);
-
-            return Response.CreateSuccessfully("Category");
+                return Response.CreateSuccessfully("Category");
+            }
+            catch (Exception)
+            {
+                return Response.CreateFailed("Category");
+            }
+            
         }
 
     }

@@ -3,7 +3,7 @@ using ST.Contracts.Ticket;
 
 namespace ST.Application.Feature.Tickets.Queries.GetAllTicket
 {
-    public class GetAllTicketQuery : IQuery<IList<TicketResponse>>
+    public class GetAllTicketQuery : IQuery<List<TicketResponse>>
     {
     }
 }

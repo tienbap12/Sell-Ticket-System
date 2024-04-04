@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Contracts.Category;
 using ST.Domain.Entities;
@@ -6,7 +7,7 @@ using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Categories.Commands.UpdateCategory
 {
-    internal class UpdateCategoryCommandHandler : ICommandHandler<UpdateCategoryCommand, Result>
+    internal class UpdateCategoryCommandHandler : ICommandHandler<UpdateCategoryCommand, Response>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
@@ -16,7 +17,7 @@ namespace ST.Application.Feature.Categories.Commands.UpdateCategory
             _categoryRepository = categoryRepository;
             _mapper = mapper;
         }
-        public async Task<Result> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
             var cateExist = await _categoryRepository.GetByIdAsync(request.Id);
             if (cateExist == null)

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Contracts.Category;
 using ST.Domain.Repositories;
@@ -22,10 +23,10 @@ namespace ST.Application.Feature.Categories.Queries.GetCategoryById
             var category = await _categoryRepository.GetByIdAsync(request.Id);
             if (category == null)
             {
-                return Response.Fail<CategoryResponse>("Khong tim thay danh muc");
+                return Response<CategoryResponse>.NotFound("Category", request.Id);
             }
-            var result = _mapper.Map<CategoryResponse>(category);
-            return Response.Success(result, "Hehe");
+            var Response = _mapper.Map<CategoryResponse>(category);
+            return Response<CategoryResponse>.Success("Get data successfully!!!", Response);
         }
     }
 }

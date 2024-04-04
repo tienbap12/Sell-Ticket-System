@@ -1,10 +1,11 @@
 ﻿using ST.Application.Commons.Abstractions;
+using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.User.Commands.Register
 {
-    internal class RegisterCommandHandler : ICommandHandler<RegisterCommand, Result>
+    internal class RegisterCommandHandler : ICommandHandler<RegisterCommand, Response>
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IPasswordHasher _passwordHasher;
@@ -15,13 +16,13 @@ namespace ST.Application.Feature.User.Commands.Register
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<Result> Handle(RegisterCommand request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             var existingUser = await _accountRepository.GetByUserName(request.Request.Username);
 
             if (existingUser != null)
             {
-                return Response.Fail("Username already exists");
+                return Response.Failure("Username already exists");
             }
 
             var (hashedPassword, salt) =  _passwordHasher.HashPassword(request.Request.Password);

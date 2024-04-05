@@ -27,5 +27,12 @@
             public const string Login = Base + "Login";
             public const string Register = Base + "Register";
         }
+        public static class Order
+        {
+            public const string GetAll = Base + "Order";
+            public const string Create = Base + "Order";
+            public const string GetDetail = Base + "OrderDetail" + "/OrderId";
+        }
+
     }
 }

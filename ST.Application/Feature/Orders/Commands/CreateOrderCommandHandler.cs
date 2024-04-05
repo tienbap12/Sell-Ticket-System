@@ -22,7 +22,7 @@ namespace ST.Application.Feature.Orders.Commands
             decimal total = 0;
             var order = new Order
             {
-                Id = Guid.NewGuid(),
+                Id = request.Request.Id,
                 UserId = request.Request.UserId,
             };
             var detailList = new List<OrderDetails>();

@@ -2,8 +2,13 @@ namespace ST.Constracts.Order
 {
     public class OrderRequest
     {
+        public Guid Id { get; private set; }
         public int UserId { get; set; }
         public List<OrderDetailRequest> Details { get; set; }
+        public OrderRequest()
+        {
+            Id = Guid.NewGuid();
+        }
     }
     public class OrderDetailRequest
     {
@@ -11,5 +16,4 @@ namespace ST.Constracts.Order
         public int Quantity { get; set; }
         public decimal Price { get; set; }
     }
-
 }

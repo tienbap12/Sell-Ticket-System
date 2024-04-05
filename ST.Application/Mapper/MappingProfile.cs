@@ -34,8 +34,8 @@ namespace ST.Application.Mapper
             /// </summary>
             CreateMap<CategoryRequest, Category>().ReverseMap();
 
-            CreateMap<OrderRequest, Order>().ReverseMap();
-            CreateMap<OrderDetailsResponse, Order>().ReverseMap();
+            CreateMap<OrderResponse, Order>().ReverseMap();
+            CreateMap<DetailsResponse, OrderDetails>().ReverseMap();
         }
     }
 }

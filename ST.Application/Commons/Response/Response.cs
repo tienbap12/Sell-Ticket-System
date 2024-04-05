@@ -115,7 +115,7 @@
         /// <param name="data">The data associated with the response.</param>
         /// <param name="isSuccess">Indicates whether the response is a success or failure.</param>
         /// <param name="message">The message associated with the response.</param>
-        protected Response( bool isSuccess, string message, T data) : base(isSuccess, message)
+        protected Response(bool isSuccess, string message, T data) : base(isSuccess, message)
         {
             Data = data;
         }
@@ -131,14 +131,14 @@
         /// <param name="data">The data associated with the response.</param>
         /// <param name="message">The success message.</param>
         /// <returns>A success response with data.</returns>
-        public static Response<T> Success(string message, T data) => new Response<T>( true, message, data);
+        public static Response<T> Success(string message, T data) => new Response<T>(true, message, data);
 
         /// <summary>
         /// Creates a failure response with the specified message.
         /// </summary>
         /// <param name="message">The failure message.</param>
         /// <returns>A failure response with data.</returns>
-        public static Response<T> Failure(string message) => new Response<T>( false, message, default);
+        public static Response<T> Failure(string message) => new Response<T>(false, message, default);
 
         /// <summary>
         /// Creates a failure response for an entity not found.

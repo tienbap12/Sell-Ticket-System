@@ -32,7 +32,7 @@ namespace ST.Application.Feature.Categories.Command.UpdateCategory
                 await _categoryRepository.UpdateAsync(updateCategory);
                 return Response.UpdateSuccessfully("Category");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Response.UpdateFailed("Category");
             }

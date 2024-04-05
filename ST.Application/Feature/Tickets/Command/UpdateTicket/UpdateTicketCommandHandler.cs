@@ -32,7 +32,7 @@ namespace ST.Application.Feature.Tickets.Command.UpdateTicket
                 await _ticketRepository.UpdateAsync(updateTicket);
                 return Response.UpdateSuccessfully("Ticket");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Response.UpdateFailed("Ticket");
             }

@@ -20,6 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commons\Interfaces\" />
-    <Folder Include="Feature\User\Queries\" />
+    <Folder Include="Feature\User\Query\" />
   </ItemGroup>
 </Project>

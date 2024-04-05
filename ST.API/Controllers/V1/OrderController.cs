@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ST.API.Contracts;
-using ST.Application.Feature.Orders.Commands;
-using ST.Application.Feature.Orders.Queries;
-using ST.Application.Feature.Orders.Queries.GetOrderDetail;
+using ST.Application.Feature.Orders.Command;
+using ST.Application.Feature.Orders.Query;
+using ST.Application.Feature.Orders.Query.GetOrderDetail;
 using ST.Constracts.Order;
 using System;
 using System.Threading.Tasks;

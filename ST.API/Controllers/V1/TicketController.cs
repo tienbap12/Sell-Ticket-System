@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ST.API.Contracts;
-using ST.Application.Feature.Tickets.Commands.CreateTicketCommand;
-using ST.Application.Feature.Tickets.Queries.GetAllTicket;
-using ST.Application.Feature.Tickets.Queries.GetTicketById;
+using ST.Application.Feature.Tickets.Command.CreateTicketCommand;
+using ST.Application.Feature.Tickets.Query.GetAllTicket;
+using ST.Application.Feature.Tickets.Query.GetTicketById;
 using ST.Contracts.Ticket;
 using System.Threading.Tasks;
 

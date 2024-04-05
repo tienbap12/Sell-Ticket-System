@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ST.API.Contracts;
-using ST.Application.Feature.Categories.Commands.CreateCategory;
-using ST.Application.Feature.Categories.Commands.DeleteCategory;
-using ST.Application.Feature.Categories.Commands.UpdateCategory;
-using ST.Application.Feature.Categories.Queries.GetAllCategory;
-using ST.Application.Feature.Categories.Queries.GetCategoryById;
+using ST.Application.Feature.Categories.Command.CreateCategory;
+using ST.Application.Feature.Categories.Command.DeleteCategory;
+using ST.Application.Feature.Categories.Command.UpdateCategory;
+using ST.Application.Feature.Categories.Query.GetAllCategory;
+using ST.Application.Feature.Categories.Query.GetCategoryById;
 using ST.Contracts.Category;
 using System.Threading.Tasks;
 

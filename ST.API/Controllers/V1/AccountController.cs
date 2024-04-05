@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ST.API.Contracts;
-using ST.Application.Feature.User.Commands.Login;
-using ST.Application.Feature.User.Commands.Register;
+using ST.Application.Feature.User.Command.Login;
+using ST.Application.Feature.User.Command.Register;
 using ST.Contracts.Authentication;
 using System.Threading.Tasks;
 

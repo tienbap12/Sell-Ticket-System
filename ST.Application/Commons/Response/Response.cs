@@ -148,5 +148,13 @@
         /// <returns>A failure response for entity not found.</returns>
         public static Response<T> NotFound(string entityName, int id) =>
             Failure($"{entityName} was not found with Id {id}");
+
+        /// <summary>
+        /// Creates a failure response for an entity not found by username.
+        /// </summary>
+        /// <param name="username">The username of the entity.</param>
+        /// <returns>A failure response for entity not found.</returns>
+        public static Response<T> NotFoundUserName(string username) =>
+            Failure($"User was not found with Username {username}");
     }
 }

@@ -28,12 +28,12 @@ namespace ST.Application.Feature.User.Commands.Login
             var user = await _accountRepository.GetByUserName(request.Request.userName);
             if (user == null)
             {
-                return Response<AuthResponse>.Failure("Khong tim thay ten nguoi dung");
+                return Response<AuthResponse>.NotFoundUserName( request.Request.userName);
             }
             var isValidPass = _passwordHashChecker.HashesMatch(request.Request.Password, user);
             if (!isValidPass)
             {
-                return Response<AuthResponse>.Failure("Sai mat khau");
+                return Response<AuthResponse>.Failure("Invalid Password");
             }
             var roleUser = await _accountRepository.GetRoleUser(user.RoleId);
             var token = _jwtProvider.Generate(new Account

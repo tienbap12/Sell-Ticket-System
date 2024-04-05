@@ -41,7 +41,7 @@ namespace ST.Application.Feature.User.Commands.Register
 
             await _accountRepository.CreateAsync(newUser);
 
-            return Response.Success("User registered successfully");
+            return Response.Success("User registered successfully!!!");
         }
     }
 }

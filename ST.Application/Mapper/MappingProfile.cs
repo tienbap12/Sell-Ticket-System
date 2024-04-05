@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ST.Constracts.Order;
 using ST.Contracts.Category;
 using ST.Contracts.Ticket;
 using ST.Domain.Entities;
@@ -33,7 +34,8 @@ namespace ST.Application.Mapper
             /// </summary>
             CreateMap<CategoryRequest, Category>().ReverseMap();
 
-
+            CreateMap<OrderRequest, Order>().ReverseMap();
+            CreateMap<OrderDetailsResponse, Order>().ReverseMap();
         }
     }
 }

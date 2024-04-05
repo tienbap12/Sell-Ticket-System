@@ -9,6 +9,7 @@ namespace ST.Domain.Interfaces
         Task<TEntity> GetByIdAsync(int id);
         Task<List<TEntity>> GetAllAsync();
         Task CreateAsync(TEntity entity);
+        Task InserRangeAsync(IEnumerable<TEntity> entities);
         Task UpdateAsync(TEntity entity);
         Task DeleteAsync(int id);
     }

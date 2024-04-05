@@ -19,7 +19,7 @@ namespace ST.MainInfrastructure.Repositories
         public async Task<Account> GetByUserName(string username)
         {
             return await _context.Accounts.Where(t => t.Username == username)
-                                          .SingleOrDefaultAsync();
+                                            .SingleOrDefaultAsync();
         }
 
         public async Task<string> GetRoleUser(int roleId)

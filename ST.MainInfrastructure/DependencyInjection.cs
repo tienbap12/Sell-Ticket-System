@@ -23,14 +23,23 @@ namespace ST.MainInfrastructure
                     configuration.GetConnectionString("DefaultConnection"),
                     optionsBuilder => optionsBuilder
                         .MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+            //DI UnitOfWork
             services.AddScoped<IUnitOfWork, ApplicationDbContext>();
+
+            //DI Authentication
+            services.AddScoped<IJwtProvider, JwtProvider>();
+            services.AddScoped<IPasswordHashChecker, PasswordHasher>();
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
+
+            //DI Repositories
             services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ITokenRepository, TokenRepository>();
             services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddScoped<IJwtProvider, JwtProvider>();
-            services.AddScoped<IPasswordHashChecker, PasswordHasher>();
-            services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+
             return services;
         }
     }

@@ -12,18 +12,15 @@ namespace ST.MainInfrastructure.Repositories
     {
         public TicketRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
         {
-
         }
-
         public async Task<List<Ticket>> GetAllTicketWithCategory()
         {
-            return await _dbSet.Include(ticket => ticket.Category).ToListAsync();
+            return await _dbSet.Include(c => c.Category).ToListAsync();
         }
-
         public async Task<Ticket> GetTicketByIdWCate(int id)
         {
-            return await _dbSet.Include(ticket => ticket.Category).SingleOrDefaultAsync(t => t.Id == id);
-
+            return await _dbSet.Include(c => c.Category)
+                                .SingleOrDefaultAsync(t => t.Id == id);
         }
     }
 }

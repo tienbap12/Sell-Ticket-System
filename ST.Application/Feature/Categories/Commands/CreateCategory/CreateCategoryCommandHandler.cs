@@ -29,7 +29,7 @@ namespace ST.Application.Feature.Categories.Commands.CreateCategory
             {
                 return Response.CreateFailed("Category");
             }
-            
+
         }
 
     }

@@ -3,6 +3,7 @@ using ST.Domain.Commons;
 using ST.Domain.Data;
 using ST.Domain.Entities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace ST.MainInfrastructure.Data
 
         public ApplicationDbContext()
         {
-            
+
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -67,9 +68,9 @@ namespace ST.MainInfrastructure.Data
         }
 
 
-        public async Task UpdateAsync<T>( T entity) where T : class
+        public async Task UpdateAsync<T>(T entity) where T : class
         {
-             Set<T>().Update(entity);
+            Set<T>().Update(entity);
         }
 
         public async Task DeleteAsync<T>(int id) where T : class
@@ -86,6 +87,10 @@ namespace ST.MainInfrastructure.Data
         public async Task CreateAsync<T>(T entity) where T : class
         {
             await Set<T>().AddAsync(entity);
+        }
+        public async Task CreateRangeAsync<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
+        {
+            await Set<TEntity>().AddRangeAsync(entities);
         }
     }
 }

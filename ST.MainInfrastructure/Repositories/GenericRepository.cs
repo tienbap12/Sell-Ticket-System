@@ -34,15 +34,19 @@ namespace ST.MainInfrastructure.Repositories
         {
             await _unitOfWork.CreateAsync(entity);
         }
-
         public async Task UpdateAsync(TEntity entity)
         {
-            await _unitOfWork.UpdateAsync( entity);
+            await _unitOfWork.UpdateAsync(entity);
         }
 
         public async Task DeleteAsync(int id)
         {
             await _unitOfWork.DeleteAsync<TEntity>(id);
+        }
+
+        public async Task InserRangeAsync(IEnumerable<TEntity> entities)
+        {
+            await _unitOfWork.CreateRangeAsync(entities);
         }
     }
 }

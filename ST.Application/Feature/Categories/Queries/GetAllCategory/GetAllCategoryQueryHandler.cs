@@ -22,10 +22,10 @@ namespace ST.Application.Feature.Categories.Queries.GetAllCategory
             var categories = await _categoryRepository.GetAllAsync();
             if (categories == null)
             {
-                return Response<IList<CategoryResponse>>.Failure("Lay danh sach that baii");
+                return Response<IList<CategoryResponse>>.Failure("Fetch data errors");
             }
             var Response = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
-            return Response<IList<CategoryResponse>>.Success( "lay danh sach thanh cong", Response.ToList());
+            return Response<IList<CategoryResponse>>.Success("Get data successfully!!!", Response.ToList());
         }
     }
 }

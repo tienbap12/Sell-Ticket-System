@@ -9,12 +9,10 @@ namespace ST.Domain.Entities
     {
         [Key]
         public Guid Id { get; set; }
-
         [ForeignKey("Accounts")]
         public int UserId { get; set; }
         public decimal TotalAmount { get; set; }
         public virtual Account Accounts { get; set; }
         public virtual ICollection<OrderDetails> Details { get; set; }
-
     }
 }

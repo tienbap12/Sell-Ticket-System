@@ -4,6 +4,7 @@ using ST.Domain.Entities;
 using ST.Domain.Repositories;
 using ST.MainInfrastructure.Data;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ST.MainInfrastructure.Repositories
@@ -12,6 +13,10 @@ namespace ST.MainInfrastructure.Repositories
     {
         public TicketRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
         {
+        }
+        public async Task<bool> CheckTicketsExistAsync(List<int> ids)
+        {
+            return await _dbSet.Where(t => ids.Contains(t.Id)).CountAsync() == ids.Count;
         }
         public async Task<List<Ticket>> GetAllTicketWithCategory()
         {

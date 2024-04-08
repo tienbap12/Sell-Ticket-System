@@ -2,27 +2,30 @@ using MediatR;
 using ST.Application.Commons.Response;
 using ST.Application.Feature.Orders.Event;
 using ST.Application.Wrappers;
-using ST.Constracts.Order;
 using ST.Domain.Entities;
 using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Orders.Command
 {
-    public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Response>
+    public class CreateOrderCommandHandler(IOrderRepository _orderRepository,
+                IOrderDetailRepository _orderDetailRepository,
+                IMediator _mediator,
+                IAccountRepository _accountRepository,
+                ITicketRepository _ticketRepository)
+                : ICommandHandler<CreateOrderCommand, Response>
     {
-        private readonly IOrderRepository _orderRepository;
-        private readonly IOrderDetailRepository _orderDetailRepository;
-        private readonly IMediator _mediator;
-
-        public CreateOrderCommandHandler(IOrderRepository orderRepository, IOrderDetailRepository orderDetailRepository, IMediator mediator)
-        {
-            _orderRepository = orderRepository;
-            _orderDetailRepository = orderDetailRepository;
-            _mediator = mediator;
-        }
-
         public async Task<Response> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
+            var user = await _accountRepository.GetByIdAsync(request.Request.UserId);
+            if (user == null)
+            {
+                return Response.NotFound("User", request.Request.UserId);
+            }
+            var ticketIds = request.Request.Details.Select(d => d.TicketId).ToList();
+            if (!await _ticketRepository.CheckTicketsExistAsync(ticketIds))
+            {
+                return Response.Failure("Ticket not found!!!");
+            }
             decimal total = 0;
             var order = new Order
             {

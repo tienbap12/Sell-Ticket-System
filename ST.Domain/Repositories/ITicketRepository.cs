@@ -7,6 +7,7 @@ namespace ST.Domain.Repositories
     {
         Task<List<Ticket>> GetAllAsync();
         Task<Ticket> GetByIdAsync(int id);
+        Task<bool> CheckTicketsExistAsync(List<int> ids);
         Task<List<Ticket>> GetAllTicketWithCategory();
         Task<Ticket> GetTicketByIdWCate(int id);
         Task CreateAsync(Ticket ticket);

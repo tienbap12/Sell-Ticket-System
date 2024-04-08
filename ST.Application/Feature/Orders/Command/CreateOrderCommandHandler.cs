@@ -1,4 +1,6 @@
+using MediatR;
 using ST.Application.Commons.Response;
+using ST.Application.Feature.Orders.Event;
 using ST.Application.Wrappers;
 using ST.Constracts.Order;
 using ST.Domain.Entities;
@@ -10,11 +12,13 @@ namespace ST.Application.Feature.Orders.Command
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IOrderDetailRepository _orderDetailRepository;
+        private readonly IMediator _mediator;
 
-        public CreateOrderCommandHandler(IOrderRepository orderRepository, IOrderDetailRepository orderDetailRepository)
+        public CreateOrderCommandHandler(IOrderRepository orderRepository, IOrderDetailRepository orderDetailRepository, IMediator mediator)
         {
             _orderRepository = orderRepository;
             _orderDetailRepository = orderDetailRepository;
+            _mediator = mediator;
         }
 
         public async Task<Response> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
@@ -43,6 +47,16 @@ namespace ST.Application.Feature.Orders.Command
             try
             {
                 await _orderRepository.CreateAsync(order);
+
+                var orderCreatedEvent = new OrderCreatedEvent(order);
+                await _mediator.Publish(orderCreatedEvent).ContinueWith(t =>
+                {
+                    if (t.IsFaulted)
+                    {
+                        Console.WriteLine($"Error handling OrderCreatedEvent {t.Exception}");
+                    }
+                    Console.WriteLine("OrderCreatedEvent handled successfully");
+                }, TaskScheduler.Default);
                 return Response.CreateSuccessfully("Order");
             }
             catch (Exception)

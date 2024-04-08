@@ -9,22 +9,32 @@ namespace ST.Application.Feature.Orders.Query.GetOrderDetail
     public class GetOrderDetailQueryHandler : IQueryHandler<GetOrderDetailQuery, List<DetailsResponse>>
     {
         private readonly IOrderDetailRepository _orderDetailRepository;
+        private readonly ITicketRepository _ticketRepository;
         private readonly IMapper _mapper;
 
-        public GetOrderDetailQueryHandler(IOrderDetailRepository orderDetailRepository, IMapper mapper)
+        public GetOrderDetailQueryHandler(IOrderDetailRepository orderDetailRepository, ITicketRepository ticketRepository, IMapper mapper)
         {
             _orderDetailRepository = orderDetailRepository;
+            _ticketRepository = ticketRepository;
             _mapper = mapper;
         }
         public async Task<Response<List<DetailsResponse>>> Handle(GetOrderDetailQuery response, CancellationToken cancellationToken)
         {
-            var res = await _orderDetailRepository.GetAllOrderDetail(response.Id);
-            if (res == null)
+            var orderDetails = await _orderDetailRepository.GetAllOrderDetail(response.Id);
+            if (orderDetails == null)
             {
                 return Response<List<DetailsResponse>>.Failure("Fail to get data");
             }
-            var result = _mapper.Map<List<DetailsResponse>>(res);
-            return Response<List<DetailsResponse>>.Success("Get data successfully!!!", result.ToList());
+            var detailsResponses = new List<DetailsResponse>();
+            foreach (var orderDetail in orderDetails)
+            {
+                var ticket = await _ticketRepository.GetByIdAsync(orderDetail.TicketId);
+                var detailsResponse = _mapper.Map<DetailsResponse>(orderDetail);
+                detailsResponse.TicketName = ticket.Name;
+                detailsResponses.Add(detailsResponse);
+            }
+
+            return Response<List<DetailsResponse>>.Success("Get data successfully!!!", detailsResponses);
         }
     }
 }

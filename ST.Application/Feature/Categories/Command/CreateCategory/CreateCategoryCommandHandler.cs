@@ -22,7 +22,6 @@ namespace ST.Application.Feature.Categories.Command.CreateCategory
             try
             {
                 await _categoryRepository.CreateAsync(result);
-
                 return Response.CreateSuccessfully("Category");
             }
             catch (Exception)
@@ -30,6 +29,5 @@ namespace ST.Application.Feature.Categories.Command.CreateCategory
                 return Response.CreateFailed("Category");
             }
         }
-
     }
 }

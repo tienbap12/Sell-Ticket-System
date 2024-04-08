@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,11 @@ namespace ST.MainInfrastructure.Repositories
                                         .ThenInclude(t => t.Ticket)
                                         .Where(o => o.Id == id)
                                         .FirstOrDefaultAsync();
+        }
+        public async Task<List<Order>> GetOrderByUserIdAsync(int id)
+        {
+            return await _context.Orders.Where(o => o.UserId == id)
+                                        .ToListAsync();
         }
     }
 }

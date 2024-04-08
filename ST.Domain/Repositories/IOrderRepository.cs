@@ -10,6 +10,7 @@ namespace ST.Domain.Repositories
         Task<List<Order>> GetAllAsync();
         Task<Order> GetByIdAsync(int id);
         Task<Order> GetDetailOrderAsync(Guid id);
+        Task<List<Order>> GetOrderByUserIdAsync(int id);
         Task CreateAsync(Order order);
         Task UpdateAsync(Order order);
         Task DeleteAsync(int id);

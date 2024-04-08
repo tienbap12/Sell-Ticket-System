@@ -12,16 +12,15 @@ namespace ST.MainInfrastructure.Data
     public class ApplicationDbContext : DbContext, IUnitOfWork
     {
         internal readonly object _dbSet;
-
         public ApplicationDbContext()
         {
-
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Account> Accounts { get; set; }
@@ -29,7 +28,6 @@ namespace ST.MainInfrastructure.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-
         public void DetachAllEntities()
         {
             var changedEntriesCopy = this.ChangeTracker.Entries()
@@ -41,7 +39,6 @@ namespace ST.MainInfrastructure.Data
                 entityEntry.State = EntityState.Detached;
             }
         }
-
         public async Task SaveChangesAsync()
         {
             foreach (var entityEntry in ChangeTracker.Entries<IAuditInfo>())
@@ -66,13 +63,10 @@ namespace ST.MainInfrastructure.Data
             }
             await base.SaveChangesAsync();
         }
-
-
         public async Task UpdateAsync<T>(T entity) where T : class
         {
             Set<T>().Update(entity);
         }
-
         public async Task DeleteAsync<T>(int id) where T : class
         {
             var entity = await Set<T>().FindAsync(id);
@@ -80,10 +74,8 @@ namespace ST.MainInfrastructure.Data
             {
                 throw new ArgumentException($"Entity with id {id} not found.");
             }
-
             Set<T>().Remove(entity);
         }
-
         public async Task CreateAsync<T>(T entity) where T : class
         {
             await Set<T>().AddAsync(entity);

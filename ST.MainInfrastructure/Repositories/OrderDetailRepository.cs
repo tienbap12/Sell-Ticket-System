@@ -21,5 +21,10 @@ namespace ST.MainInfrastructure.Repositories
         {
             return await _context.OrderDetails.Where(x => x.OrderId == id).ToListAsync();
         }
+
+        public Task<List<OrderDetails>> GetAllOrderDetailByUserId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

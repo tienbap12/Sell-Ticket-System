@@ -10,11 +10,8 @@ using ST.MainInfrastructure.Data;
 
 namespace ST.MainInfrastructure.Repositories
 {
-    public class OrderRepository : GenericRepository<Order>, IOrderRepository
+    public class OrderRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : GenericRepository<Order>(context, unitOfWork), IOrderRepository
     {
-        public OrderRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
-        {
-        }
         public async Task<Order> GetDetailOrderAsync(Guid id)
         {
             return await _dbSet.Include(x => x.Details)

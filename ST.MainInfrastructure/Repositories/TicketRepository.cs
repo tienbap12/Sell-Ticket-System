@@ -9,11 +9,8 @@ using System.Threading.Tasks;
 
 namespace ST.MainInfrastructure.Repositories
 {
-    public class TicketRepository : GenericRepository<Ticket>, ITicketRepository
+    public class TicketRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : GenericRepository<Ticket>(context, unitOfWork), ITicketRepository
     {
-        public TicketRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
-        {
-        }
         public async Task<bool> CheckTicketsExistAsync(List<int> ids)
         {
             return await _dbSet.Where(t => ids.Contains(t.Id)).CountAsync() == ids.Count;

@@ -32,7 +32,7 @@ namespace ST.API.Controllers.V1
         public async Task<IActionResult> CreateAsync(CategoryRequest categoryRequest)
         {
             var command = new CreateCategoryCommand(categoryRequest);
-            return  Ok(await Mediator.Send(command));
+            return Ok(await Mediator.Send(command));
         }
         [HttpPut]
         [Route(ApiRoutesV1.Category.Update)]
@@ -48,6 +48,6 @@ namespace ST.API.Controllers.V1
             var command = new DeleteCategoryCommand(id);
             return Ok(await Mediator.Send(command));
         }
-        
+
     }
 }

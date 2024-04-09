@@ -2,7 +2,7 @@
 
 namespace ST.Application.Wrappers
 {
-    public interface ICommandHandler<in TCommand, T>: IRequestHandler<TCommand, T> 
+    public interface ICommandHandler<in TCommand, T> : IRequestHandler<TCommand, T>
         where TCommand : ICommand<T>
     {
     }

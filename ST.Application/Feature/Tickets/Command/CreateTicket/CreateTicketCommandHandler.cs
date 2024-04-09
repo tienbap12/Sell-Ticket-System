@@ -7,22 +7,14 @@ using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Tickets.Command.CreateTicketCommand
 {
-    public class CreateTicketCommandHandler : ICommandHandler<CreateTicketCommand, Response>
+    public class CreateTicketCommandHandler(ITicketRepository ticketRepository, IMapper mapper) : ICommandHandler<CreateTicketCommand, Response>
     {
-        private readonly ITicketRepository _ticketRepository;
-        private readonly IMapper _mapper;
-
-        public CreateTicketCommandHandler(ITicketRepository ticketRepository, IMapper mapper)
-        {
-            _ticketRepository = ticketRepository;
-            _mapper = mapper;
-        }
         public async Task<Response> Handle(CreateTicketCommand request, CancellationToken cancellationToken)
         {
-            var result = _mapper.Map<TicketRequest, Ticket>(request.Request);
+            var result = mapper.Map<TicketRequest, Ticket>(request.Request);
             try
             {
-                await _ticketRepository.CreateAsync(result);
+                await ticketRepository.CreateAsync(result);
                 return Response.CreateSuccessfully("Ticket");
 
             }

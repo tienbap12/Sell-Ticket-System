@@ -5,10 +5,7 @@ using ST.MainInfrastructure.Data;
 
 namespace ST.MainInfrastructure.Repositories
 {
-    public class TokenRepository : GenericRepository<RefreshToken>, ITokenRepository
+    public class TokenRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : GenericRepository<RefreshToken>(context, unitOfWork), ITokenRepository
     {
-        public TokenRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
-        {
-        }
     }
 }

@@ -10,11 +10,8 @@ using ST.MainInfrastructure.Data;
 
 namespace ST.MainInfrastructure.Repositories
 {
-    public class OrderDetailRepository : GenericRepository<OrderDetails>, IOrderDetailRepository
+    public class OrderDetailRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : GenericRepository<OrderDetails>(context, unitOfWork), IOrderDetailRepository
     {
-        public OrderDetailRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
-        {
-        }
         public async Task<List<OrderDetails>> GetAllOrderDetail(Guid id)
         {
             return await _dbSet.Where(x => x.OrderId == id).ToListAsync();

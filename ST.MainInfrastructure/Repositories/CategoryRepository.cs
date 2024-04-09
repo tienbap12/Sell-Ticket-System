@@ -5,10 +5,7 @@ using ST.MainInfrastructure.Data;
 
 namespace ST.MainInfrastructure.Repositories
 {
-    internal class CategoryRepository : GenericRepository<Category>, ICategoryRepository
+    internal class CategoryRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : GenericRepository<Category>(context, unitOfWork), ICategoryRepository
     {
-        public CategoryRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
-        {
-        }
     }
 }

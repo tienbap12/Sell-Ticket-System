@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ST.MainInfrastructure.Repositories
 {
-    public class AccountRepository : GenericRepository<Account>, IAccountRepository
+    public class AccountRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : GenericRepository<Account>(context, unitOfWork), IAccountRepository
     {
-        public AccountRepository(ApplicationDbContext context, IUnitOfWork unitOfWork) : base(context, unitOfWork)
-        {
-        }
         public async Task<Account> GetByUserName(string username)
         {
             return await _dbSet.Where(t => t.Username == username)

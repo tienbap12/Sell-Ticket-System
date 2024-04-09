@@ -6,25 +6,16 @@ using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Tickets.Query.GetAllTicket
 {
-    public class GetAllTicketQueryHandler : IQueryHandler<GetAllTicketQuery, List<TicketResponse>>
+    public class GetAllTicketQueryHandler(ITicketRepository ticketRepository, IMapper mapper) : IQueryHandler<GetAllTicketQuery, List<TicketResponse>>
     {
-        private readonly IMapper _mapper;
-        private readonly ITicketRepository _ticketRepository;
-
-        public GetAllTicketQueryHandler(ITicketRepository ticketRepository, IMapper mapper)
-        {
-            _mapper = mapper;
-            _ticketRepository = ticketRepository;
-        }
-
         public async Task<Response<List<TicketResponse>>> Handle(GetAllTicketQuery request, CancellationToken cancellationToken)
         {
-            var tickets = await _ticketRepository.GetAllTicketWithCategory();
+            var tickets = await ticketRepository.GetAllTicketWithCategory();
             if (tickets is null)
             {
                 return Response<List<TicketResponse>>.Failure("Not found");
             }
-            var Response = _mapper.Map<List<TicketResponse>>(tickets);
+            var Response = mapper.Map<List<TicketResponse>>(tickets);
             return Response<List<TicketResponse>>.Success("Get data successfully!!!", Response.ToList());
         }
     }

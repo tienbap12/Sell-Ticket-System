@@ -10,14 +10,9 @@ using System.Text;
 
 namespace ST.MainInfrastructure.Common.Authentication
 {
-    internal class JwtProvider : IJwtProvider
+    internal class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
     {
-        private readonly JwtOptions _jwtOptions;
-
-        public JwtProvider(IOptions<JwtOptions> options)
-        {
-            _jwtOptions = options.Value;
-        }
+        private readonly JwtOptions _jwtOptions = options.Value;
 
         public string Generate(Account req)
         {

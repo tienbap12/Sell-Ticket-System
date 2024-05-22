@@ -1,6 +1,6 @@
-﻿using ST.Application.Commons.Response;
-using ST.Application.Wrappers;
+﻿using ST.Application.Wrappers;
 using ST.Contracts.Authentication;
+using ST.Doamin.Commons.Primitives;
 
 namespace ST.Application.Feature.User.Command.Login
 {

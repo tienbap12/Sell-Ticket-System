@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using ST.Application.Commons.Errors;
+using ST.Doamin.Commons.Primitives;
 
 namespace ST.Application.Feature.User.Command.Login
 {

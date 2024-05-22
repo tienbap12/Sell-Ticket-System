@@ -1,6 +1,6 @@
 ﻿using ST.Application.Commons.Abstractions;
-using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
+using ST.Doamin.Commons.Primitives;
 using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.User.Command.Register

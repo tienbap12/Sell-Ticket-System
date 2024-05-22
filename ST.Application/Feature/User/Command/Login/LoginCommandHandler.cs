@@ -1,15 +1,21 @@
 ﻿using AutoMapper;
 using ST.Application.Commons.Abstractions;
-using ST.Application.Commons.Response;
+using ST.Application.Feature.Tickets.Command.UpdateTicket;
 using ST.Application.Wrappers;
 using ST.Contracts.Authentication;
-using ST.Domain.Commons;
+using ST.Doamin.Commons.Primitives;
+using ST.Domain.Commons.Abstractions;
 using ST.Domain.Entities;
 using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.User.Command.Login
 {
-    internal class LoginCommandHandler(IAccountRepository accountRepository, IMapper mapper, IJwtProvider jwtProvider, IPasswordHashChecker passwordHashChecker, ITokenRepository tokenRepository) : ICommandHandler<LoginCommand, Response<AuthResponse>>
+    internal class LoginCommandHandler(IAccountRepository accountRepository,
+                    IMapper mapper,
+                    IJwtProvider jwtProvider,
+                    IPasswordHashChecker passwordHashChecker,
+                    ITokenRepository tokenRepository)
+                    : ICommandHandler<LoginCommand, Response<AuthResponse>>
     {
         public async Task<Response<AuthResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
@@ -42,7 +48,6 @@ namespace ST.Application.Feature.User.Command.Login
             });
             tokenRepository.CreateAsync(new RefreshToken
             {
-
             });
             var result = new AuthResponse
             {
@@ -50,6 +55,11 @@ namespace ST.Application.Feature.User.Command.Login
                 Role = roleUser,
             };
             return Response<AuthResponse>.Success("Login successfully!!!", result);
+        }
+
+        public Task<Response> Handle(UpdateTicketCommand request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

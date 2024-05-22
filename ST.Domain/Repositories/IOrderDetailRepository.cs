@@ -7,8 +7,10 @@ namespace ST.Domain.Repositories
 {
     public interface IOrderDetailRepository
     {
-        Task<List<OrderDetails>> GetAllOrderDetail(Guid id);
+        Task<List<OrderDetails>> GetAllOrderDetail(int id);
+
         Task<List<OrderDetails>> GetAllOrderDetailByUserId(int id);
+
         Task InserRangeAsync(IEnumerable<OrderDetails> orderDetails);
     }
 }

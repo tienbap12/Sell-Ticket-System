@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ST.Domain.Commons
+namespace ST.Domain.Commons.Abstractions
 {
     public interface IAuditInfo
     {

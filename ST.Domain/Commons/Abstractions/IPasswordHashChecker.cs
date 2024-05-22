@@ -1,6 +1,6 @@
 ﻿using ST.Domain.Entities;
 
-namespace ST.Domain.Commons
+namespace ST.Domain.Commons.Abstractions
 {
     public interface IPasswordHashChecker
     {

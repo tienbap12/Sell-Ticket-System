@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ST.Application.Commons.Abstractions;
-using ST.Domain.Commons;
+using ST.Domain.Commons.Abstractions;
 using ST.Domain.Data;
 using ST.Domain.Repositories;
 using ST.MainInfrastructure.Common.Authentication;

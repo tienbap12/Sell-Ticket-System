@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Contracts.Ticket;
+using ST.Doamin.Commons.Primitives;
 using ST.Domain.Entities;
 using ST.Domain.Repositories;
 

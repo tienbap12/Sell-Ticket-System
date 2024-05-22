@@ -1,5 +1,6 @@
-﻿using ST.Application.Commons.Response;
+﻿using ST.Application.Feature.Tickets.Command.UpdateTicket;
 using ST.Application.Wrappers;
+using ST.Doamin.Commons.Primitives;
 using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Categories.Command.DeleteCategory

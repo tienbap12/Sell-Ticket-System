@@ -12,9 +12,9 @@ namespace ST.MainInfrastructure.Repositories
     {
         public async Task<Account> GetByUserName(string username)
         {
-            return await _dbSet.Where(t => t.Username == username)
-                                            .SingleOrDefaultAsync();
+            return await _dbSet.FirstOrDefaultAsync(x => x.Username == username);
         }
+
         public async Task<string> GetRoleUser(int roleId)
         {
             return await _dbSet.Include(r => r.Roles)

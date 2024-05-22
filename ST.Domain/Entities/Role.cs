@@ -1,9 +1,9 @@
-﻿namespace ST.Domain.Entities
-{
-    public class Role
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+﻿using ST.Domain.Commons.Primitives;
 
+namespace ST.Domain.Entities
+{
+    public class Role : Entity
+    {
+        public string Name { get; set; }
     }
 }

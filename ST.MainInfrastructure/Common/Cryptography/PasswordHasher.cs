@@ -1,5 +1,5 @@
 ﻿using ST.Application.Commons.Abstractions;
-using ST.Domain.Commons;
+using ST.Domain.Commons.Abstractions;
 using ST.Domain.Entities;
 using System;
 using System.Security.Cryptography;

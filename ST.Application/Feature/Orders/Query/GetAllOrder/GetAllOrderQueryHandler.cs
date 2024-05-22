@@ -1,8 +1,7 @@
 using AutoMapper;
-using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Constracts.Order;
-using ST.Domain.Entities;
+using ST.Doamin.Commons.Primitives;
 using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Orders.Query.GetAllOrder

@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using MediatR;
-using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Contracts.Ticket;
+using ST.Doamin.Commons.Primitives;
 using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Tickets.Query.GetTicketById
@@ -19,6 +18,5 @@ namespace ST.Application.Feature.Tickets.Query.GetTicketById
             var Response = mapper.Map<TicketResponse>(ticket);
             return Response<TicketResponse>.Success($"Successfully retrieved ticket with Id {request.Id}", Response);
         }
-
     }
 }

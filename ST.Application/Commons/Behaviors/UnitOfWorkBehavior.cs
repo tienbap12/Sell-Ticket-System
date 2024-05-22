@@ -13,19 +13,40 @@ namespace ST.Application.Commons.Behaviors
             CancellationToken cancellationToken)
         {
             var response = await next();
-            if (IsCommand())
+            var isInTransaction = unitOfWork.IsInTransaction;
+            var isSaved = unitOfWork.IsSaved;
+            var propIsSuccess = (response as object).GetType().GetProperty("IsSuccess");
+            if (propIsSuccess is not null && !(bool)propIsSuccess.GetValue(response)! && isInTransaction)
             {
-                await unitOfWork.SaveChangesAsync();
+                await unitOfWork.RollBackAsync(cancellationToken);
                 return response;
             }
-            else
+
+            try
             {
-                return response;
+                if (!isSaved)
+                {
+                    if (IsCommand)
+                        await unitOfWork.SaveChangesAsync(cancellationToken);
+                }
+                else
+                {
+                    unitOfWork.SetIsSaved(false);
+                }
             }
+            catch
+            {
+                if (isInTransaction)
+                    await unitOfWork.RollBackAsync(cancellationToken);
+                throw;
+            }
+
+            if (isInTransaction)
+                await unitOfWork.CommitAsync(cancellationToken);
+
+            return response;
         }
-        private static bool IsCommand()
-        {
-            return typeof(TTRequest).Name.EndsWith("Command");
-        }
+
+        private static bool IsCommand => typeof(TTRequest).Name.EndsWith("Command");
     }
 }

@@ -1,6 +1,6 @@
-﻿using ST.Application.Commons.Response;
-using ST.Application.Wrappers;
+﻿using ST.Application.Wrappers;
 using ST.Contracts.Category;
+using ST.Doamin.Commons.Primitives;
 
 namespace ST.Application.Feature.Categories.Command.CreateCategory
 {

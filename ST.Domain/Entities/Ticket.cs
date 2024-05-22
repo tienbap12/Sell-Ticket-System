@@ -1,20 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ST.Domain.Commons.Primitives;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ST.Domain.Entities
 {
-    public class Ticket
+    public class Ticket : Entity
     {
-        [Key]
-        public int Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
+
         [ForeignKey("Categories")]
         public int CategoryId { get; set; }
+
         public int CounterDrive { get; set; }
-        public bool IsCombo { get; set; }
-        public string Slug { get; set; }
-        public string Resources { get; set; }
+        public string ImgPath { get; set; }
         public decimal FinalDiscount { get; set; }
         public decimal FinalDiscountPercent { get; set; }
         public decimal UnitPrice { get; set; }

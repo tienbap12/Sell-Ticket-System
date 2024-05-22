@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using MediatR;
-using ST.Application.Commons.Response;
 using ST.Application.Wrappers;
 using ST.Contracts.Category;
+using ST.Doamin.Commons.Primitives;
 using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.Categories.Query.GetCategoryById

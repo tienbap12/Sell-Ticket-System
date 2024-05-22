@@ -1,10 +1,9 @@
 ﻿using MediatR;
-using ST.Application.Commons.Response;
+using ST.Doamin.Commons.Primitives;
 
 namespace ST.Application.Wrappers
 {
     public interface IQuery<T> : IRequest<Response<T>>
     {
-
     }
 }

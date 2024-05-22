@@ -2,14 +2,16 @@ namespace ST.Constracts.Order
 {
     public class OrderRequest
     {
-        public Guid Id { get; private set; }
+        public int Id { get; private set; }
         public int UserId { get; set; }
         public List<OrderDetailRequest> Details { get; set; }
-        public OrderRequest()
-        {
-            Id = Guid.NewGuid();
-        }
+
+        /*        public OrderRequest()
+                {
+                    Id = Guid.NewGuid();
+                }*/
     }
+
     public class OrderDetailRequest
     {
         public int TicketId { get; set; }

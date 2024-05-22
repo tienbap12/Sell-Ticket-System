@@ -1,7 +1,7 @@
 using MediatR;
-using ST.Application.Commons.Response;
 using ST.Application.Feature.Orders.Event;
 using ST.Application.Wrappers;
+using ST.Doamin.Commons.Primitives;
 using ST.Domain.Entities;
 using ST.Domain.Repositories;
 

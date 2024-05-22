@@ -1,40 +1,56 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using ST.MainInfrastructure.Data;
+using Newtonsoft.Json;
+using ST.API.Options;
+using ST.API.WebSocket;
+using ST.Application;
+using ST.Application.Mapper;
+using ST.MainInfrastructure;
+using ST.MainInfrastructure.Common.Authentication;
 
-using System;
+var builder = WebApplication.CreateBuilder(args);
 
-namespace ST.API
+// Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication(builder.Configuration);
+builder.Services.ConfigService(builder.Configuration);
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
+
+builder.Services.AddSignalR();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+    app.UseDeveloperExceptionPage();
+else
+    app.UseHsts();
+
+var swaggerOptions = app.Configuration.GetSection(nameof(SwaggerOptions)).Get<SwaggerOptions>();
+
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var host = CreateHostBuilder(args).Build();
-            using var scope = host.Services.CreateScope();
-            var services = scope.ServiceProvider;
-            try
-            {
-                var context = services.GetRequiredService<ApplicationDbContext>();
-                context.Database.Migrate();
-                host.Run(); // Move this line inside the using block
-            }
-            catch (Exception e)
-            {
-                var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(e, $"An error occured while migrating or seeding the database: {e.Message}");
-                throw;
-            }
-        }
+    options.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description ?? "My API V1");
+});
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+// Apply CORS policy
+app.UseCors("CorsPolicy");
+
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        "default",
+        "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapHub<ChatHub>("/chat-hub");
+});
+
+app.Run();

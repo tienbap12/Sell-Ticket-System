@@ -37,7 +37,6 @@ namespace ST.MainInfrastructure.Common.Authentication
                 signingCredentials: new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature));
-
             var jwtToken = jwtTokenHandler.WriteToken(token);
             return jwtToken;
         }

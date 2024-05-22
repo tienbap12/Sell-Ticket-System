@@ -2,23 +2,23 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace ST.API.Installers
+namespace ST.API.Options
 {
-    public static class MvcInstaller
+    public static class SwaggerUiConfig
     {
-        public static IServiceCollection InstallServices(this IServiceCollection services,
+        public static IServiceCollection ConfigService(this IServiceCollection services,
             IConfiguration configuration)
         {
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "School Management System API",
+                    Title = "Sell Ticket System API",
                     Version = "v1",
                     Contact = new OpenApiContact
                     {
-                        Name = "Nuran Terlan",
-                        Email = "nuran.terlan@mail.ru"
+                        Name = "TB",
+                        Email = "tienbap12@gmail.com"
                     }
                 });
 
@@ -42,7 +42,6 @@ namespace ST.API.Installers
                             }
                         },
                         new string[] {}
-
                     }
                 });
             });

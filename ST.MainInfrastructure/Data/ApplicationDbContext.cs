@@ -28,6 +28,15 @@ namespace ST.MainInfrastructure.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                // Configure the database provider (e.g., SQL Server) if not using dependency injection
+                optionsBuilder.UseSqlServer("Server=THANHTIEN-24695\\SQLEXPRESS;Database=MyST;User Id=sa;Password=123;TrustServerCertificate=True;");
+            }
+        }
         public void DetachAllEntities()
         {
             var changedEntriesCopy = this.ChangeTracker.Entries()

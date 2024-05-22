@@ -9,7 +9,7 @@ using ST.Domain.Repositories;
 
 namespace ST.Application.Feature.User.Command.Login
 {
-    internal class LoginCommandHandler(IAccountRepository accountRepository, IMapper mapper, IJwtProvider jwtProvider, IPasswordHashChecker passwordHashChecker) : ICommandHandler<LoginCommand, Response<AuthResponse>>
+    internal class LoginCommandHandler(IAccountRepository accountRepository, IMapper mapper, IJwtProvider jwtProvider, IPasswordHashChecker passwordHashChecker, ITokenRepository tokenRepository) : ICommandHandler<LoginCommand, Response<AuthResponse>>
     {
         public async Task<Response<AuthResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
@@ -39,6 +39,10 @@ namespace ST.Application.Feature.User.Command.Login
                     Id = user.RoleId,
                     Name = roleUser
                 }
+            });
+            tokenRepository.CreateAsync(new RefreshToken
+            {
+
             });
             var result = new AuthResponse
             {

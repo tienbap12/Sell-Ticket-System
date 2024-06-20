@@ -3,8 +3,8 @@ using ST.Doamin.Commons.Primitives;
 
 namespace ST.Application.Feature.Categories.Command.DeleteCategory
 {
-    public class DeleteCategoryCommand(int id) : ICommand<Response>
+    public class DeleteCategoryCommand(Guid id) : ICommand<Response>
     {
-        public int Id { get; set; } = id;
+        public Guid Id { get; set; } = id;
     }
 }

@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using ST.Application.Feature.Tickets.Command.UpdateTicket;
-using ST.Doamin.Commons.Primitives;
 
 namespace ST.Application.Wrappers
 {

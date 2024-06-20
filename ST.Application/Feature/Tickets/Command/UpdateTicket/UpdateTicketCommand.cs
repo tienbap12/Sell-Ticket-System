@@ -4,9 +4,9 @@ using ST.Doamin.Commons.Primitives;
 
 namespace ST.Application.Feature.Tickets.Command.UpdateTicket
 {
-    internal class UpdateTicketCommand(TicketRequest request, int id) : ICommand<Response>
+    internal class UpdateTicketCommand(TicketRequest request, Guid id) : ICommand<Response>
     {
         public TicketRequest Request { get; set; } = request;
-        public int Id { get; set; } = id;
+        public Guid Id { get; set; } = id;
     }
 }

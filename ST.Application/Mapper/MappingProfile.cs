@@ -14,7 +14,7 @@ namespace ST.Application.Mapper
             /// Creates a mapping between the Ticket entity and the TicketResponse DTO.
             /// </summary>
             CreateMap<Ticket, TicketResponse>()
-                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Categories.Name))
                 .ReverseMap();
             /// <summary>
             /// Creates a mapping between the TicketRequest DTO and the Ticket entity.

@@ -1,23 +1,26 @@
-﻿using ST.Domain.Commons.Primitives;
+﻿using ST.Domain.Commons.Abstractions;
+using ST.Domain.Commons.Primitives;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ST.Domain.Entities
 {
-    public class Ticket : Entity
+    public class Ticket : Entity, IAuditInfo
     {
         public string Name { get; set; }
-        public string? Description { get; set; }
-
-        [ForeignKey("Categories")]
-        public int CategoryId { get; set; }
-
-        public int CounterDrive { get; set; }
+        [StringLength(256)]
+        public string Description { get; set; } = string.Empty;
+        [ForeignKey(nameof(Category))]
+        public  Guid CategoryId { get; set; }
+        [StringLength(128)]
         public string ImgPath { get; set; }
         public decimal FinalDiscount { get; set; }
         public decimal FinalDiscountPercent { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal FinalPrice { get; set; }
-        public virtual Category Category { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public DateTime? LastModifiedOn { get; set; }
+        public virtual Category Categories { get; set; }
     }
 }

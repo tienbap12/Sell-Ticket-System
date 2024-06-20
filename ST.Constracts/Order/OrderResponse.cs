@@ -9,10 +9,10 @@ namespace ST.Constracts.Order
     }
     public class DetailsResponse
     {
-        public int Id { get; set; }
+        public  Guid Id { get; set; }
         public Guid OrderId { get; set; }
-        public int TicketId { get; set; }
-        public int Quantity { get; set; }
+        public  Guid TicketId { get; set; }
+        public  Guid Quantity { get; set; }
         public decimal Price { get; set; }
         public string TicketName { get; set; }
 

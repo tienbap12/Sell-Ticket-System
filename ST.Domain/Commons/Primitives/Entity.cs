@@ -9,8 +9,7 @@ namespace ST.Domain.Commons.Primitives;
 public abstract class Entity
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     [NotMapped]
     [JsonIgnore]

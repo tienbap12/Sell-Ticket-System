@@ -6,7 +6,7 @@ namespace ST.Domain.Entities
 {
     public class RefreshToken : Entity
     {
-        public int UserId { get; set; }
+        public  Guid UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public Account Account { get; set; }

@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using System.Text;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using ST.Application.Commons.Behaviors;
 using ST.Application.Options;
+using System.Reflection;
+using System.Text;
 
 namespace ST.Application
 {

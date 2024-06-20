@@ -29,7 +29,7 @@ namespace ST.API.Controllers.V1
         }
 
         [HttpGet(ApiRoutesV1.Order.GetDetail)]
-        public async Task<IActionResult> GetDetailAsync(int id)
+        public async Task<IActionResult> GetDetailAsync(Guid id)
         {
             var query = new GetOrderDetailQuery(id);
             var result = await Mediator.Send(query);

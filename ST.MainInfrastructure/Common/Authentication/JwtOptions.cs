@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ST.MainInfrastructure.Common.Authentication
+﻿namespace ST.MainInfrastructure.Common.Authentication
 {
     public class JwtOptions
     {

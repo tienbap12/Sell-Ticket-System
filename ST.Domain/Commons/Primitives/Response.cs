@@ -1,4 +1,6 @@
-﻿namespace ST.Doamin.Commons.Primitives;
+﻿using System;
+
+namespace ST.Doamin.Commons.Primitives;
 
 /// <summary>
 /// Represents a response object.
@@ -75,7 +77,7 @@ public class Response
     /// <param name="entityName">The name of the entity.</param>
     /// <param name="id">The ID of the entity.</param>
     /// <returns>A failure response for entity not found.</returns>
-    public static Response NotFound(string entityName, int id) =>
+    public static Response NotFound(string entityName, Guid id) =>
         Failure($"{entityName} was not found with Id {id}");
 
     /// <summary>
@@ -146,7 +148,7 @@ public class Response<T> : Response
     /// <param name="entityName">The name of the entity.</param>
     /// <param name="id">The ID of the entity.</param>
     /// <returns>A failure response for entity not found.</returns>
-    public static Response<T> NotFound(string entityName, int id) =>
+    public static Response<T> NotFound(string entityName, Guid id) =>
         Failure($"{entityName} was not found with Id {id}");
 
     /// <summary>

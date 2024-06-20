@@ -1,5 +1,4 @@
-﻿using ST.Application.Feature.Tickets.Command.UpdateTicket;
-using ST.Application.Wrappers;
+﻿using ST.Application.Wrappers;
 using ST.Doamin.Commons.Primitives;
 using ST.Domain.Repositories;
 

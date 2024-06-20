@@ -1,4 +1,5 @@
 ﻿using ST.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace ST.Domain.Repositories
@@ -6,12 +7,12 @@ namespace ST.Domain.Repositories
     public interface ITicketRepository
     {
         Task<List<Ticket>> GetAllAsync();
-        Task<Ticket> GetByIdAsync(int id);
-        Task<bool> CheckTicketsExistAsync(List<int> ids);
+        Task<Ticket> GetByIdAsync(Guid id);
+        Task<bool> CheckTicketsExistAsync(List<Guid> ids);
         Task<List<Ticket>> GetAllTicketWithCategory();
-        Task<Ticket> GetTicketByIdWCate(int id);
+        Task<Ticket> GetTicketByIdWCate(Guid id);
         Task CreateAsync(Ticket ticket);
         Task UpdateAsync(Ticket ticket);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Guid id);
     }
 }

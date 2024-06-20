@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ST.API.Contracts;
 using ST.Application.Feature.Tickets.Command.CreateTicketCommand;
 using ST.Application.Feature.Tickets.Query.GetAllTicket;
 using ST.Application.Feature.Tickets.Query.GetTicketById;
 using ST.Contracts.Ticket;
+using System;
 using System.Threading.Tasks;
 
 namespace ST.API.Controllers.V1
@@ -19,7 +19,7 @@ namespace ST.API.Controllers.V1
             return Ok(await Mediator.Send(query));
         }
         [HttpGet(ApiRoutesV1.Ticket.GetById)]
-        public async Task<IActionResult> GetByIdAsync(int id)
+        public async Task<IActionResult> GetByIdAsync(Guid id)
         {
             var query = new GetTicketByIdQuery(id);
             return Ok(await Mediator.Send(query));

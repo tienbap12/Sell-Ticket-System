@@ -15,7 +15,7 @@ namespace ST.Domain.Data
 
         Task UpdateAsync<T>(T entity) where T : class;
 
-        Task DeleteAsync<T>(int id) where T : class;
+        Task DeleteAsync<T>(Guid id) where T : class;
 
         bool IsInTransaction { get; }
         bool IsSaved { get; }

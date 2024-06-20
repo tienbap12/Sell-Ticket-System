@@ -1,7 +1,7 @@
+using ST.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ST.Domain.Entities;
 
 namespace ST.Domain.Repositories
 {
@@ -9,16 +9,16 @@ namespace ST.Domain.Repositories
     {
         Task<List<Order>> GetAllAsync();
 
-        Task<Order> GetByIdAsync(int id);
+        Task<Order> GetByIdAsync(Guid id);
 
-        Task<Order> GetDetailOrderAsync(int id);
+        Task<Order> GetDetailOrderAsync(Guid id);
 
-        Task<List<Order>> GetOrderByUserIdAsync(int id);
+        Task<List<Order>> GetOrderByUserIdAsync(Guid id);
 
         Task CreateAsync(Order order);
 
         Task UpdateAsync(Order order);
 
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Guid id);
     }
 }

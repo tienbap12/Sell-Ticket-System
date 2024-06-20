@@ -6,11 +6,11 @@ namespace ST.Domain.Interfaces
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> GetByIdAsync(int id);
+        Task<TEntity> GetByIdAsync(Guid id);
         Task<List<TEntity>> GetAllAsync();
         Task CreateAsync(TEntity entity);
         Task InserRangeAsync(IEnumerable<TEntity> entities);
         Task UpdateAsync(TEntity entity);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Guid id);
     }
 }

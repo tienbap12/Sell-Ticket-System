@@ -1,4 +1,5 @@
 ﻿using ST.Domain.Entities;
+using System;
 using System.Threading.Tasks;
 
 namespace ST.Domain.Repositories
@@ -7,6 +8,6 @@ namespace ST.Domain.Repositories
     {
         Task CreateAsync(RefreshToken token);
         Task UpdateAsync(RefreshToken token);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Guid id);
     }
 }

@@ -6,6 +6,7 @@ using ST.Application.Feature.Categories.Command.UpdateCategory;
 using ST.Application.Feature.Categories.Query.GetAllCategory;
 using ST.Application.Feature.Categories.Query.GetCategoryById;
 using ST.Contracts.Category;
+using System;
 using System.Threading.Tasks;
 
 namespace ST.API.Controllers.V1
@@ -22,7 +23,7 @@ namespace ST.API.Controllers.V1
         }
         [HttpGet]
         [Route(ApiRoutesV1.Category.GetById)]
-        public async Task<IActionResult> GetByIdAsync(int id)
+        public async Task<IActionResult> GetByIdAsync(Guid id)
         {
             var query = new GetCategoryByIdQuery(id);
             return Ok(await Mediator.Send(query));
@@ -36,14 +37,14 @@ namespace ST.API.Controllers.V1
         }
         [HttpPut]
         [Route(ApiRoutesV1.Category.Update)]
-        public async Task<IActionResult> UpdateAsync(CategoryRequest request, int id)
+        public async Task<IActionResult> UpdateAsync(CategoryRequest request, Guid id)
         {
             var command = new UpdateCategoryCommand(id, request);
             return Ok(await Mediator.Send(command));
         }
         [HttpDelete]
         [Route(ApiRoutesV1.Category.Delete)]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
             var command = new DeleteCategoryCommand(id);
             return Ok(await Mediator.Send(command));

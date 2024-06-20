@@ -2,6 +2,7 @@
 using ST.Domain.Data;
 using ST.Domain.Interfaces;
 using ST.MainInfrastructure.Data;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -34,7 +35,7 @@ namespace ST.MainInfrastructure.Repositories
         /// </summary>
         /// <param name="id">The ID of the entity.</param>
         /// <returns>The entity with the specified ID, or null if not found.</returns>
-        public async Task<TEntity> GetByIdAsync(int id)
+        public async Task<TEntity> GetByIdAsync(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
@@ -70,7 +71,7 @@ namespace ST.MainInfrastructure.Repositories
         /// Deletes an entity by its ID asynchronously.
         /// </summary>
         /// <param name="id">The ID of the entity to delete.</param>
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
             await _unitOfWork.DeleteAsync<TEntity>(id);
         }

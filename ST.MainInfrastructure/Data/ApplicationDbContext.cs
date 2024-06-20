@@ -117,7 +117,7 @@ namespace ST.MainInfrastructure.Data
             Set<T>().Update(entity);
         }
 
-        public async Task DeleteAsync<T>(int id) where T : class
+        public async Task DeleteAsync<T>(Guid id) where T : class
         {
             var entity = await Set<T>().FindAsync(id);
             if (entity == null)

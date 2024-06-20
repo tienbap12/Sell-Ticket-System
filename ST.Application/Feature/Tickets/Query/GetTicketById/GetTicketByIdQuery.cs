@@ -3,8 +3,8 @@ using ST.Contracts.Ticket;
 
 namespace ST.Application.Feature.Tickets.Query.GetTicketById
 {
-    public class GetTicketByIdQuery(int id) : IQuery<TicketResponse>
+    public class GetTicketByIdQuery(Guid id) : IQuery<TicketResponse>
     {
-        public int Id { get; set; } = id;
+        public Guid Id { get; set; } = id;
     }
 }

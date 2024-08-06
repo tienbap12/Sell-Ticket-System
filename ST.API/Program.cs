@@ -5,7 +5,6 @@ using Microsoft.Extensions.Hosting;
 using ST.API.Options;
 using ST.API.WebSocket;
 using ST.Application;
-using ST.Application.Mapper;
 using ST.MainInfrastructure;
 using ST.MainInfrastructure.Common.Authentication;
 
@@ -13,7 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.ConfigService(builder.Configuration);
@@ -46,10 +44,9 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapControllerRoute(
-        "default",
-        "{controller=Home}/{action=Index}/{id?}");
-    endpoints.MapHub<ChatHub>("/chat-hub");
+    _ = endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 });
-
+app.MapHub<ChatHub>("/chat-hub");
 app.Run();

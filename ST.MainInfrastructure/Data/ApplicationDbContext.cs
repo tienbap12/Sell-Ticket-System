@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ST.Domain.Commons.Primitives;
+using ST.Domain.Interfaces;
+using ST.MainInfrastructure.Repositories;
 
 namespace ST.MainInfrastructure.Data
 {
@@ -107,14 +110,8 @@ namespace ST.MainInfrastructure.Data
                         throw new ArgumentOutOfRangeException();
                 }
             }
-            await base.SaveChangesAsync();
+            await base.SaveChangesAsync(cancellationToken);
 
-            IsSaved = true;
-        }
-
-        public async Task UpdateAsync<T>(T entity) where T : class
-        {
-            Set<T>().Update(entity);
         }
 
         public async Task DeleteAsync<T>(Guid id) where T : class
@@ -137,14 +134,6 @@ namespace ST.MainInfrastructure.Data
             await Set<TEntity>().AddRangeAsync(entities);
         }
 
-        public bool IsInTransaction => _transaction != null;
-
-        public bool IsSaved { get; private set; }
-
-        public void SetIsSaved(bool isSave)
-        {
-            IsSaved = isSave;
-        }
 
         public async Task BeginTransacionAsync(CancellationToken cancellationToken = default)
         {
@@ -170,6 +159,11 @@ namespace ST.MainInfrastructure.Data
         {
             if (_transaction != null)
                 await _transaction.RollbackAsync(cancellationToken);
+        }
+
+        public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : Entity
+        {
+            return new GenericRepository<TEntity>(this);
         }
     }
 }

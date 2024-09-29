@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ST.Domain.Commons.Primitives;
 using ST.Domain.Interfaces;
 using ST.MainInfrastructure.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ST.MainInfrastructure.Repositories;
 
@@ -13,7 +13,8 @@ namespace ST.MainInfrastructure.Repositories;
 ///     Represents a generic repository for accessing and manipulating entities of type TEntity.
 /// </summary>
 /// <typeparam name="TEntity">The type of entity.</typeparam>
-public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : Entity{
+public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : Entity
+{
     private readonly ApplicationDbContext _context;
     private readonly DbSet<TEntity> _dbSet;
 

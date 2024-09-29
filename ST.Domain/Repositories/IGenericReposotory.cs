@@ -1,8 +1,8 @@
-﻿using System;
+﻿using ST.Domain.Commons.Primitives;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ST.Domain.Commons.Primitives;
 
 namespace ST.Domain.Interfaces
 {

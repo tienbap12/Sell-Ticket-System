@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ST.API.Contracts;
+using ST.Application.Feature.Categories.Command.UpdateCategory;
 using ST.Application.Feature.Categories.Commands.CreateCategory;
 using ST.Application.Feature.Categories.Commands.DeleteCategory;
-using ST.Application.Feature.Categories.Command.UpdateCategory;
 using ST.Application.Feature.Categories.Query.GetAllCategory;
 using ST.Application.Feature.Categories.Query.GetCategoryById;
 using ST.Contracts.Category;
@@ -16,11 +16,13 @@ namespace ST.API.Controllers.V1
     {
         [HttpGet]
         [Route(ApiRoutesV1.Category.GetAll)]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllAsync([FromQuery] string search, [FromQuery] int pageSize, [FromQuery] int pageNumber = 1)
         {
-            var query = new GetAllCategoryQuery();
+            var query = new GetAllCategoryQuery(search, pageSize);
             return Ok(await Mediator.Send(query));
         }
+
+
         [HttpGet]
         [Route(ApiRoutesV1.Category.GetById)]
         public async Task<IActionResult> GetByIdAsync(Guid id)

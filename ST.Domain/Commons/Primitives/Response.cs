@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ST.Doamin.Commons.Primitives;
 
@@ -158,4 +159,46 @@ public class Response<T> : Response
     /// <returns>A failure response for entity not found.</returns>
     public static Response<T> NotFoundUserName(string username) =>
         Failure($"User was not found with Username {username}");
+}
+/// <summary>
+/// Represents a paged response object with data.
+/// </summary>
+/// <typeparam name="T">The type of the data.</typeparam>
+public class PagedResponse<T> : Response<List<T>>
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PagedResponse{T}"/> class.
+    /// </summary>
+    /// <param name="items">The items for the current page.</param>
+    /// <param name="totalCount">The total count of items across all pages.</param>
+    /// <param name="pageNumber">The current page number.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    public PagedResponse(List<T> items, int totalCount, int pageNumber, int pageSize)
+        : base(true, "Data retrieved successfully", items)
+    {
+        TotalCount = totalCount;
+        PageNumber = pageNumber;
+        PageSize = pageSize;
+        TotalPages = (int)Math.Ceiling((double)totalCount / pageSize);
+    }
+
+    /// <summary>
+    /// Gets the total count of items across all pages.
+    /// </summary>
+    public int TotalCount { get; }
+
+    /// <summary>
+    /// Gets the current page number.
+    /// </summary>
+    public int PageNumber { get; }
+
+    /// <summary>
+    /// Gets the number of items per page.
+    /// </summary>
+    public int PageSize { get; }
+
+    /// <summary>
+    /// Gets the total number of pages.
+    /// </summary>
+    public int TotalPages { get; }
 }

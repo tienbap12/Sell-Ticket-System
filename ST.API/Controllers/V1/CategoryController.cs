@@ -22,7 +22,6 @@ namespace ST.API.Controllers.V1
             return Ok(await Mediator.Send(query));
         }
 
-
         [HttpGet]
         [Route(ApiRoutesV1.Category.GetById)]
         public async Task<IActionResult> GetByIdAsync(Guid id)
